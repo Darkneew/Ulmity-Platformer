@@ -1,0 +1,42 @@
+[gd_scene load_steps=5 format=3 uid="uid://qn2m22381lqr"]
+
+[ext_resource type="Texture2D" uid="uid://rw7jo8lwoeot" path="res://terrain/background.png" id="1_2xbt6"]
+[ext_resource type="PackedScene" uid="uid://ohkrhpdmbuar" path="res://scenes/flower.tscn" id="2_svaku"]
+[ext_resource type="PackedScene" uid="uid://bgcq1fc5jdwgc" path="res://scenes/character.tscn" id="3_0legt"]
+[ext_resource type="PackedScene" uid="uid://d0fy2b5bg4m38" path="res://scenes/platform.tscn" id="4_aviw1"]
+
+[node name="level" type="Node2D"]
+
+[node name="Background" type="Sprite2D" parent="."]
+position = Vector2(226, 18)
+scale = Vector2(10, 10)
+texture = ExtResource("1_2xbt6")
+
+[node name="Flower" parent="." instance=ExtResource("2_svaku")]
+position = Vector2(440, 248)
+color = Color(0.996078, 0, 0.396078, 1)
+
+[node name="Flower2" parent="." instance=ExtResource("2_svaku")]
+position = Vector2(1344, 248)
+color = Color(0.37458, 0.858668, 0.832496, 1)
+
+[node name="Flower3" parent="." instance=ExtResource("2_svaku")]
+position = Vector2(-2696, -536)
+color = Color(0.640935, 0.463015, 1, 1)
+
+[node name="character" parent="." instance=ExtResource("3_0legt")]
+position = Vector2(226, 18)
+
+[node name="RemoteTransform2D" type="RemoteTransform2D" parent="character"]
+scale = Vector2(10, 10)
+remote_path = NodePath("../../Background")
+
+[node name="platform" parent="." instance=ExtResource("4_aviw1")]
+position = Vector2(-132, 380)
+
+[node name="platform2" parent="." instance=ExtResource("4_aviw1")]
+position = Vector2(3365, -520)
+
+[node name="platform3" parent="." instance=ExtResource("4_aviw1")]
+position = Vector2(-3836, -432)
+rocky = true
