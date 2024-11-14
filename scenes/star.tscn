@@ -1,0 +1,23 @@
+[gd_scene load_steps=4 format=3 uid="uid://b7k2r82pmp42b"]
+
+[ext_resource type="Texture2D" uid="uid://d1t2jonk7kccy" path="res://terrain/star.png" id="1_ss4ts"]
+[ext_resource type="Script" path="res://script/star.gd" id="1_tlens"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_ebevw"]
+size = Vector2(22.0859, 1133.33)
+
+[node name="Star" type="Area2D"]
+scale = Vector2(0.12, 0.12)
+collision_layer = 0
+script = ExtResource("1_tlens")
+
+[node name="Star" type="Sprite2D" parent="."]
+position = Vector2(384, 216)
+texture = ExtResource("1_ss4ts")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(399.999, 233.333)
+scale = Vector2(54.3332, 1)
+shape = SubResource("RectangleShape2D_ebevw")
+
+[connection signal="body_entered" from="." to="." method="player_entered"]

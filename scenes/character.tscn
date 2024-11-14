@@ -1,4 +1,4 @@
-[gd_scene load_steps=22 format=3 uid="uid://bgcq1fc5jdwgc"]
+[gd_scene load_steps=23 format=3 uid="uid://bgcq1fc5jdwgc"]
 
 [ext_resource type="Script" path="res://script/character.gd" id="1_dpiu8"]
 [ext_resource type="Texture2D" uid="uid://ds0is6qvp11nx" path="res://spritesheet/Run.png" id="1_q23u2"]
@@ -135,7 +135,11 @@ animations = [{
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_488ao"]
 size = Vector2(152, 304)
 
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_18xiy"]
+size = Vector2(117.241, 296)
+
 [node name="character" type="CharacterBody2D"]
+collision_mask = 18
 script = ExtResource("1_dpiu8")
 
 [node name="Camera2D" type="Camera2D" parent="."]
@@ -147,6 +151,17 @@ scale = Vector2(20, 20)
 sprite_frames = SubResource("SpriteFrames_8cgsp")
 animation = &"down"
 
-[node name="hitbox" type="CollisionShape2D" parent="."]
+[node name="physical body" type="CollisionShape2D" parent="."]
 position = Vector2(2, 9)
 shape = SubResource("RectangleShape2D_488ao")
+
+[node name="hitbox" type="Area2D" parent="."]
+scale = Vector2(1.16, 1)
+collision_layer = 0
+collision_mask = 4
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="hitbox"]
+position = Vector2(-3.44827, 4)
+shape = SubResource("RectangleShape2D_18xiy")
+
+[connection signal="body_entered" from="hitbox" to="." method="hurt"]

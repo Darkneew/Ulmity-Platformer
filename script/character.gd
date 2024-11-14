@@ -2,6 +2,7 @@ extends CharacterBody2D
 
 const SPEED = 1300.0
 const JUMP_VELOCITY = 2000.0
+const STRENGTH = 100
 
 # Get the gravity from the project settings to be synced with RigidBody nodes.
 var gravity: float = 2000
@@ -34,4 +35,13 @@ func _physics_process(delta):
 			$sprite.play("up")
 		else: 
 			$sprite.play("down")
+			
 	move_and_slide()
+	for i in range(get_slide_collision_count()):
+		var c = get_slide_collision(i)
+		if c.get_collider().collision_layer & 16:
+				c.get_collider().apply_central_impulse(-c.get_normal() * STRENGTH)
+	
+	
+func hurt (x):
+	queue_free()

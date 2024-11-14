@@ -1,9 +1,12 @@
-[gd_scene load_steps=5 format=3 uid="uid://qn2m22381lqr"]
+[gd_scene load_steps=8 format=3 uid="uid://qn2m22381lqr"]
 
 [ext_resource type="Texture2D" uid="uid://rw7jo8lwoeot" path="res://terrain/background.png" id="1_2xbt6"]
 [ext_resource type="PackedScene" uid="uid://ohkrhpdmbuar" path="res://scenes/flower.tscn" id="2_svaku"]
 [ext_resource type="PackedScene" uid="uid://bgcq1fc5jdwgc" path="res://scenes/character.tscn" id="3_0legt"]
 [ext_resource type="PackedScene" uid="uid://d0fy2b5bg4m38" path="res://scenes/platform.tscn" id="4_aviw1"]
+[ext_resource type="PackedScene" uid="uid://cm5yu1rr5sc3r" path="res://scenes/spike.tscn" id="5_qfaan"]
+[ext_resource type="PackedScene" uid="uid://b7k2r82pmp42b" path="res://scenes/star.tscn" id="6_dkg2l"]
+[ext_resource type="PackedScene" uid="uid://dfvh2lplrs6iu" path="res://scenes/box.tscn" id="7_d2pnq"]
 
 [node name="level" type="Node2D"]
 
@@ -21,8 +24,11 @@ position = Vector2(1344, 248)
 color = Color(0.37458, 0.858668, 0.832496, 1)
 
 [node name="Flower3" parent="." instance=ExtResource("2_svaku")]
-position = Vector2(-2696, -536)
+position = Vector2(-1884, -296)
 color = Color(0.640935, 0.463015, 1, 1)
+
+[node name="box" parent="." instance=ExtResource("7_d2pnq")]
+position = Vector2(-2144, -352)
 
 [node name="character" parent="." instance=ExtResource("3_0legt")]
 position = Vector2(226, 18)
@@ -38,5 +44,15 @@ position = Vector2(-132, 380)
 position = Vector2(3365, -520)
 
 [node name="platform3" parent="." instance=ExtResource("4_aviw1")]
-position = Vector2(-3836, -432)
+position = Vector2(-3024, -192)
 rocky = true
+
+[node name="spike" parent="." instance=ExtResource("5_qfaan")]
+position = Vector2(760, 264)
+
+[node name="spike2" parent="." instance=ExtResource("5_qfaan")]
+position = Vector2(1072, 264)
+
+[node name="Node2D" parent="." instance=ExtResource("6_dkg2l")]
+position = Vector2(-552, 0)
+scale = Vector2(0.12, 0.118006)
