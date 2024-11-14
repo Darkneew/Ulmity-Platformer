@@ -43,5 +43,5 @@ func _physics_process(delta):
 				c.get_collider().apply_central_impulse(-c.get_normal() * STRENGTH)
 	
 	
-func hurt (x):
-	queue_free()
+func hurt (_x):
+	get_tree().reload_current_scene()

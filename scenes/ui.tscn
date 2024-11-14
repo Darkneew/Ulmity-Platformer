@@ -1,0 +1,65 @@
+[gd_scene load_steps=4 format=3 uid="uid://c0dt0ww5ky3f4"]
+
+[ext_resource type="Script" path="res://script/ui.gd" id="1_2iyv6"]
+[ext_resource type="Theme" uid="uid://uhecttg57lt7" path="res://UI/main_theme.tres" id="1_gob2y"]
+[ext_resource type="Texture2D" uid="uid://mo1b6358qxj" path="res://terrain/coeur_3.png" id="3_6u580"]
+
+[node name="UI" type="CanvasLayer"]
+process_mode = 3
+script = ExtResource("1_2iyv6")
+
+[node name="win" type="Control" parent="."]
+visible = false
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="ColorRect" type="ColorRect" parent="win"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0.270588, 0.105882, 0.0156863, 0.631373)
+
+[node name="RichTextLabel" type="RichTextLabel" parent="win"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -524.0
+offset_top = -139.0
+offset_right = 524.0
+offset_bottom = 139.0
+grow_horizontal = 2
+grow_vertical = 2
+theme = ExtResource("1_gob2y")
+text = "YOU WON"
+
+[node name="RestartButton" type="Button" parent="."]
+offset_left = 8.0
+offset_top = 16.0
+offset_right = 175.0
+offset_bottom = 56.0
+theme = ExtResource("1_gob2y")
+text = "Restart"
+
+[node name="TextureRect" type="TextureRect" parent="."]
+texture_filter = 1
+anchors_preset = 1
+anchor_left = 1.0
+anchor_right = 1.0
+offset_left = -136.0
+offset_top = 24.0
+offset_right = -40.0
+offset_bottom = 112.0
+grow_horizontal = 0
+texture = ExtResource("3_6u580")
+
+[connection signal="pressed" from="RestartButton" to="." method="restart"]

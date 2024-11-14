@@ -1,14 +1,17 @@
-[gd_scene load_steps=8 format=3 uid="uid://qn2m22381lqr"]
+[gd_scene load_steps=10 format=3 uid="uid://qn2m22381lqr"]
 
 [ext_resource type="Texture2D" uid="uid://rw7jo8lwoeot" path="res://terrain/background.png" id="1_2xbt6"]
+[ext_resource type="Script" path="res://script/level.gd" id="1_ierx3"]
 [ext_resource type="PackedScene" uid="uid://ohkrhpdmbuar" path="res://scenes/flower.tscn" id="2_svaku"]
 [ext_resource type="PackedScene" uid="uid://bgcq1fc5jdwgc" path="res://scenes/character.tscn" id="3_0legt"]
 [ext_resource type="PackedScene" uid="uid://d0fy2b5bg4m38" path="res://scenes/platform.tscn" id="4_aviw1"]
 [ext_resource type="PackedScene" uid="uid://cm5yu1rr5sc3r" path="res://scenes/spike.tscn" id="5_qfaan"]
 [ext_resource type="PackedScene" uid="uid://b7k2r82pmp42b" path="res://scenes/star.tscn" id="6_dkg2l"]
 [ext_resource type="PackedScene" uid="uid://dfvh2lplrs6iu" path="res://scenes/box.tscn" id="7_d2pnq"]
+[ext_resource type="PackedScene" uid="uid://c0dt0ww5ky3f4" path="res://scenes/ui.tscn" id="8_gduy8"]
 
 [node name="level" type="Node2D"]
+script = ExtResource("1_ierx3")
 
 [node name="Background" type="Sprite2D" parent="."]
 position = Vector2(226, 18)
@@ -37,22 +40,28 @@ position = Vector2(226, 18)
 scale = Vector2(10, 10)
 remote_path = NodePath("../../Background")
 
-[node name="platform" parent="." instance=ExtResource("4_aviw1")]
+[node name="Map" type="Node2D" parent="."]
+
+[node name="platform" parent="Map" instance=ExtResource("4_aviw1")]
 position = Vector2(-132, 380)
 
-[node name="platform2" parent="." instance=ExtResource("4_aviw1")]
+[node name="platform2" parent="Map" instance=ExtResource("4_aviw1")]
 position = Vector2(3365, -520)
 
-[node name="platform3" parent="." instance=ExtResource("4_aviw1")]
+[node name="platform3" parent="Map" instance=ExtResource("4_aviw1")]
 position = Vector2(-3024, -192)
 rocky = true
 
-[node name="spike" parent="." instance=ExtResource("5_qfaan")]
+[node name="spike" parent="Map" instance=ExtResource("5_qfaan")]
 position = Vector2(760, 264)
 
-[node name="spike2" parent="." instance=ExtResource("5_qfaan")]
+[node name="spike2" parent="Map" instance=ExtResource("5_qfaan")]
 position = Vector2(1072, 264)
 
-[node name="Node2D" parent="." instance=ExtResource("6_dkg2l")]
+[node name="star" parent="." instance=ExtResource("6_dkg2l")]
 position = Vector2(-552, 0)
 scale = Vector2(0.12, 0.118006)
+
+[node name="UI" parent="." instance=ExtResource("8_gduy8")]
+
+[connection signal="end_game" from="star" to="." method="win"]
