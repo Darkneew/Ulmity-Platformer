@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://mo1b6358qxj"
-path="res://.godot/imported/coeur_3.png-74d15aed4c68b5293f1f4898740863c1.ctex"
+uid="uid://m51qhji5gm52"
+path="res://.godot/imported/coeur_1.png-3f61ad50d9dd0f8cea5f5866a62f6566.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://terrain/coeur_3.png"
-dest_files=["res://.godot/imported/coeur_3.png-74d15aed4c68b5293f1f4898740863c1.ctex"]
+source_file="res://UI/coeur_1.png"
+dest_files=["res://.godot/imported/coeur_1.png-3f61ad50d9dd0f8cea5f5866a62f6566.ctex"]
 
 [params]
 

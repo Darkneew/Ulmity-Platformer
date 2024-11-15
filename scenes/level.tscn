@@ -14,7 +14,7 @@
 script = ExtResource("1_ierx3")
 
 [node name="Background" type="Sprite2D" parent="."]
-position = Vector2(226, 18)
+position = Vector2(-3064, -464)
 scale = Vector2(10, 10)
 texture = ExtResource("1_2xbt6")
 
@@ -34,7 +34,7 @@ color = Color(0.640935, 0.463015, 1, 1)
 position = Vector2(-2144, -352)
 
 [node name="character" parent="." instance=ExtResource("3_0legt")]
-position = Vector2(226, 18)
+position = Vector2(-3064, -464)
 
 [node name="RemoteTransform2D" type="RemoteTransform2D" parent="character"]
 scale = Vector2(10, 10)
@@ -53,15 +53,15 @@ position = Vector2(-3024, -192)
 rocky = true
 
 [node name="spike" parent="Map" instance=ExtResource("5_qfaan")]
-position = Vector2(760, 264)
+position = Vector2(-360, 264)
 
 [node name="spike2" parent="Map" instance=ExtResource("5_qfaan")]
-position = Vector2(1072, 264)
+position = Vector2(480, 264)
 
 [node name="star" parent="." instance=ExtResource("6_dkg2l")]
-position = Vector2(-552, 0)
-scale = Vector2(0.12, 0.118006)
+position = Vector2(4416, -1224)
 
 [node name="UI" parent="." instance=ExtResource("8_gduy8")]
 
+[connection signal="heart_update" from="character" to="." method="heart_update"]
 [connection signal="end_game" from="star" to="." method="win"]

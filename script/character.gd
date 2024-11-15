@@ -1,11 +1,14 @@
 extends CharacterBody2D
 
+signal heart_update(nb: int)
+
 const SPEED = 1300.0
 const JUMP_VELOCITY = 2000.0
 const STRENGTH = 100
 
 # Get the gravity from the project settings to be synced with RigidBody nodes.
 var gravity: float = 2000
+var hearts := 3
 
 func _physics_process(delta):
 	# Add the gravity.
@@ -44,4 +47,7 @@ func _physics_process(delta):
 	
 	
 func hurt (_x):
-	get_tree().reload_current_scene()
+	hearts -= 1
+	heart_update.emit(hearts)
+	if hearts == 0:
+		get_tree().reload_current_scene()

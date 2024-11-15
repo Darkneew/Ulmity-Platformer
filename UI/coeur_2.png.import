@@ -3,15 +3,15 @@
 importer="texture"
 type="CompressedTexture2D"
 uid="uid://cg71rf4mlfpjl"
-path="res://.godot/imported/coeur_2.png-2b5e966ccf11e818a631af9d8f711476.ctex"
+path="res://.godot/imported/coeur_2.png-0ab3dc0ad1b12be206861fc75a99e911.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://terrain/coeur_2.png"
-dest_files=["res://.godot/imported/coeur_2.png-2b5e966ccf11e818a631af9d8f711476.ctex"]
+source_file="res://UI/coeur_2.png"
+dest_files=["res://.godot/imported/coeur_2.png-0ab3dc0ad1b12be206861fc75a99e911.ctex"]
 
 [params]
 
