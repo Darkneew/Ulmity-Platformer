@@ -1,0 +1,11 @@
+[gd_scene load_steps=3 format=3 uid="uid://cmlj0eshwcc4f"]
+
+[ext_resource type="Script" path="res://script/ulmity.gd" id="1_6bx3i"]
+[ext_resource type="PackedScene" uid="uid://b2yxvdncinmtc" path="res://scenes/menu.tscn" id="1_r0opd"]
+
+[node name="Ulmity" type="Node"]
+script = ExtResource("1_6bx3i")
+
+[node name="Menu" parent="." instance=ExtResource("1_r0opd")]
+
+[connection signal="start" from="Menu" to="." method="load_level" binds= [1]]
