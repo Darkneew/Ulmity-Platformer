@@ -13,7 +13,7 @@ func load_level(i: int):
 	if i > levels.size():
 		var my_menu = menu.instantiate()
 		add_child(my_menu)
-		menu.start.connect(load_level.bind(1))
+		my_menu.start.connect(load_level.bind(1))
 	else: 
 		var our_level = levels[i-1].instantiate()
 		add_child(our_level)
