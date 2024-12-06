@@ -1,11 +1,18 @@
-[gd_scene load_steps=3 format=3 uid="uid://cmlj0eshwcc4f"]
+[gd_scene load_steps=4 format=3 uid="uid://cmlj0eshwcc4f"]
 
 [ext_resource type="Script" path="res://script/ulmity.gd" id="1_6bx3i"]
 [ext_resource type="PackedScene" uid="uid://b2yxvdncinmtc" path="res://scenes/menu.tscn" id="1_r0opd"]
+[ext_resource type="AudioStream" uid="uid://cm5amgkbcmt6s" path="res://sound/music_1.mp3" id="3_f15aa"]
 
 [node name="Ulmity" type="Node"]
 script = ExtResource("1_6bx3i")
 
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("3_f15aa")
+volume_db = -10.0
+autoplay = true
+
 [node name="Menu" parent="." instance=ExtResource("1_r0opd")]
 
-[connection signal="start" from="Menu" to="." method="load_level" binds= [1]]
+[connection signal="finished" from="AudioStreamPlayer" to="." method="change_music"]
+[connection signal="start" from="Menu" to="." method="load_level" binds= [0]]

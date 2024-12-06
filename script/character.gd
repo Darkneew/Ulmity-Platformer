@@ -20,6 +20,7 @@ func _physics_process(delta):
 
 	# Handle jump.
 	if Input.is_action_just_pressed("ui_accept") and is_on_floor():
+		$Sounds/JumpSound.play()
 		velocity.y = - JUMP_VELOCITY
 	# Get the input direction and handle the movement/deceleration.
 	# As good practice, you should replace UI actions with custom gameplay actions.
@@ -32,7 +33,6 @@ func _physics_process(delta):
 		$sprite.play("idling")
 		velocity.x = move_toward(velocity.x, 0, SPEED)
 		
-		
 	if not is_on_floor():
 		if velocity.y < 0:
 			$sprite.play("up")
@@ -43,10 +43,11 @@ func _physics_process(delta):
 	for i in range(get_slide_collision_count()):
 		var c = get_slide_collision(i)
 		if c.get_collider().collision_layer & 16:
-				c.get_collider().apply_central_impulse(-c.get_normal() * STRENGTH)
+			c.get_collider().apply_central_impulse(-c.get_normal() * STRENGTH)
 	
 	
 func hurt (_x):
+	$Sounds/HurtSound.play()
 	hearts -= 1
 	heart_update.emit(hearts)
 	if hearts == 0:
