@@ -1,4 +1,4 @@
-[gd_scene load_steps=9 format=3 uid="uid://qn2m22381lqr"]
+[gd_scene load_steps=10 format=3 uid="uid://qn2m22381lqr"]
 
 [ext_resource type="Script" path="res://script/level.gd" id="1_17m1b"]
 [ext_resource type="Texture2D" uid="uid://rw7jo8lwoeot" path="res://terrain/background.png" id="2_bdi1a"]
@@ -8,6 +8,7 @@
 [ext_resource type="PackedScene" uid="uid://d0fy2b5bg4m38" path="res://scenes/platform.tscn" id="6_hae63"]
 [ext_resource type="PackedScene" uid="uid://b7k2r82pmp42b" path="res://scenes/star.tscn" id="7_uy8wd"]
 [ext_resource type="PackedScene" uid="uid://c0dt0ww5ky3f4" path="res://scenes/ui.tscn" id="8_3gqsa"]
+[ext_resource type="PackedScene" uid="uid://oejyh8ito3xk" path="res://scenes/gravity_zone.tscn" id="9_x0etq"]
 
 [node name="level" type="Node2D"]
 script = ExtResource("1_17m1b")
@@ -16,6 +17,10 @@ script = ExtResource("1_17m1b")
 position = Vector2(-3064, -464)
 scale = Vector2(10, 10)
 texture = ExtResource("2_bdi1a")
+
+[node name="GravityZone" parent="." instance=ExtResource("9_x0etq")]
+position = Vector2(384, 24)
+scale = Vector2(2.23696, 1)
 
 [node name="Flower" parent="." instance=ExtResource("3_pp4ul")]
 position = Vector2(440, 248)
@@ -38,6 +43,7 @@ position = Vector2(-3064, -464)
 [node name="RemoteTransform2D" type="RemoteTransform2D" parent="character"]
 scale = Vector2(10, 10)
 remote_path = NodePath("../../Background")
+update_rotation = false
 
 [node name="Map" type="Node2D" parent="."]
 

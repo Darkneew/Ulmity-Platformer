@@ -9,8 +9,11 @@ const SPEED = 1300.0
 const GRAVITY : float = 2000
 const JUMP_VELOCITY : float = 2000
 
+var direction: Vector2 = Vector2.DOWN
 var heart: int 
 var gravity: float 
+
+@onready var sprite : Node = $sprite
 
 @export var state: State: 
 	get: 
@@ -19,55 +22,60 @@ var gravity: float
 		state = value
 		if sprite == null: 
 			return
-		if value == State.Walking:
-			sprite.play("running")
-			gravity = GRAVITY
-		elif value == State.Falling:
-			sprite.play("falling")
-			gravity = GRAVITY * 1.3 
-		elif value == State.Floating:
-			sprite.play("floating")
-			gravity = GRAVITY * 0.7 
-		elif value == State.Jumping:
-			sprite.play("jumping")
-			gravity = GRAVITY 
-			$Sounds/JumpSound.play()
-			velocity.y = - JUMP_VELOCITY
-		elif value == State.StayingStill:
-			sprite.play("idling")
-			gravity = GRAVITY
-		else: 
-			print("WARNING: unknown state")
-			print(value)
-
-@onready var sprite : Node = $sprite
+		match value:
+			State.Walking:
+				sprite.play("running")
+				gravity = GRAVITY
+			State.Falling:
+				sprite.play("falling")
+				gravity = GRAVITY * 1.3 
+			State.Floating:
+				sprite.play("floating")
+				gravity = GRAVITY * 0.7 
+			State.Jumping:
+				sprite.play("jumping")
+				gravity = GRAVITY 
+				$Sounds/JumpSound.play()
+				velocity = direction.rotated(-PI/2) * x_speed() - JUMP_VELOCITY * direction
+			State.StayingStill:
+				sprite.play("idling")
+				gravity = GRAVITY
+			_: 
+				print("WARNING: unknown state")
+				print(value)
 
 func update_state():
 	if state == State.Walking:
 		if not is_on_floor():
 			state = State.Falling
-		elif velocity.x == 0:
+		elif x_speed() == 0:
 			state = State.StayingStill
 	elif state == State.Falling:
 		if is_on_floor():
-			if velocity.x == 0:
+			if x_speed() == 0:
 				state = State.StayingStill
 			else: 
 				state = State.Walking
 	elif state == State.Floating:
-		if velocity.y > 0.2 * JUMP_VELOCITY:
+		if y_speed() > 0.2 * JUMP_VELOCITY:
 			state = State.Falling
 	elif state == State.Jumping:
-		if velocity.y > - 0.2 * JUMP_VELOCITY:
+		if y_speed() > - 0.2 * JUMP_VELOCITY:
 			state = State.Floating
 	elif state == State.StayingStill:
 		if not is_on_floor():
 			state = State.Falling
-		elif not velocity.x == 0:
+		elif not x_speed() == 0:
 			state = State.Walking
 	else: 
 		print("WARNING: unknown state")
 		print(state)
+
+func change_direction(angle : float):
+	up_direction = - Vector2.DOWN.rotated(angle / 180 * PI)
+	direction = Vector2.DOWN.rotated(angle / 180 * PI)
+	rotation = angle / 180 * PI
+	state = State.Floating
 
 func hurt (_x):
 	$Sounds/HurtSound.play()
@@ -76,6 +84,12 @@ func hurt (_x):
 	if heart == 0:
 		get_tree().reload_current_scene()
 
+func y_speed():
+	return direction.dot(velocity)
+
+func x_speed():
+	return direction.rotated(-PI/2).dot(velocity)
+
 func _ready():
 	gravity = GRAVITY
 	heart = 3
@@ -83,16 +97,15 @@ func _ready():
 
 func _process(delta):
 	# Applying gravity
-	velocity.y += gravity * delta
-	
+	velocity += direction * gravity * delta
 	# Jump
 	if Input.is_action_just_pressed("ui_accept") and (state == State.Walking or state == State.StayingStill):
 		state = State.Jumping
-		
+
 	# Movement 
-	var direction = Input.get_axis("ui_left", "ui_right")
-	sprite.flip_h = (direction < 0)
-	velocity.x = direction * SPEED
+	var input = Input.get_axis("ui_left", "ui_right")
+	sprite.flip_h = (input < 0)
+	velocity = direction.rotated(-PI/2) * input * SPEED + y_speed() * direction
 	
 	# Collision
 	move_and_slide()

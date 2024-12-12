@@ -208,6 +208,7 @@ script = ExtResource("1_uy1dy")
 state = 4
 
 [node name="Camera2D" type="Camera2D" parent="."]
+ignore_rotation = false
 zoom = Vector2(0.2, 0.2)
 
 [node name="sprite" type="AnimatedSprite2D" parent="."]

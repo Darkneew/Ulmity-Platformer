@@ -1,0 +1,72 @@
+[gd_scene load_steps=8 format=3 uid="uid://oejyh8ito3xk"]
+
+[ext_resource type="Script" path="res://script/gravity_zone.gd" id="1_40inq"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_rsiit"]
+size = Vector2(64, 64)
+
+[sub_resource type="Gradient" id="Gradient_xjy56"]
+colors = PackedColorArray(0.54902, 0.364706, 0.572549, 0.588235, 0.376471, 0.235294, 0.392157, 0.588235)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_q134q"]
+gradient = SubResource("Gradient_xjy56")
+fill = 1
+fill_to = Vector2(0.5, 0.5)
+
+[sub_resource type="Animation" id="Animation_yuckp"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:texture:fill_from")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(0, 0)]
+}
+
+[sub_resource type="Animation" id="Animation_7cfcu"]
+resource_name = "default"
+length = 2.0
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:texture:fill_from")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.5, 1, 1.5, 2),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1),
+"update": 0,
+"values": [Vector2(0, 0), Vector2(1, 0), Vector2(1, 1), Vector2(0, 1), Vector2(0, 0)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_c4ahk"]
+_data = {
+"RESET": SubResource("Animation_yuckp"),
+"default": SubResource("Animation_7cfcu")
+}
+
+[node name="GravityZone" type="Area2D"]
+script = ExtResource("1_40inq")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+scale = Vector2(10, 10)
+shape = SubResource("RectangleShape2D_rsiit")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+scale = Vector2(10, 10)
+texture = SubResource("GradientTexture2D_q134q")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+"": SubResource("AnimationLibrary_c4ahk")
+}
+autoplay = "default"
+
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]
+[connection signal="body_exited" from="." to="." method="_on_body_exited"]

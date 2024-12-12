@@ -22,7 +22,6 @@ func change_music():
 	$AudioStreamPlayer.play()
 
 func load_level(i: int):
-	print(i)
 	remove_child.call_deferred(get_child(1))
 	if i >= levels.size():
 		var my_menu = menu.instantiate()

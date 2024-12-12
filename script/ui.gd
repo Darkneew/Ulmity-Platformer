@@ -7,8 +7,8 @@ func win():
 
 func restart():
 	get_tree().paused = false
-	get_tree().reload_current_scene()
 	$RestartButton.release_focus()
+	get_tree().reload_current_scene()
 
 func pause():
 	if get_tree().paused:
