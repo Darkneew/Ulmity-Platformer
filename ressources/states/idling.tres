@@ -1,0 +1,6 @@
+[gd_resource type="Resource" load_steps=2 format=3 uid="uid://bbjruwvni0cun"]
+
+[ext_resource type="Script" path="res://ressources/states/idling.gd" id="1_56f8t"]
+
+[resource]
+script = ExtResource("1_56f8t")

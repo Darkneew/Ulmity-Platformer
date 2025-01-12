@@ -1,0 +1,6 @@
+[gd_resource type="Resource" load_steps=2 format=3 uid="uid://cy6tddux6erb8"]
+
+[ext_resource type="Script" path="res://ressources/states/jumping.gd" id="1_sbnc1"]
+
+[resource]
+script = ExtResource("1_sbnc1")

@@ -245,4 +245,4 @@ volume_db = 12.0
 stream = ExtResource("7_xosjh")
 volume_db = 13.0
 
-[connection signal="body_entered" from="hitbox" to="." method="get_damage"]
+[connection signal="body_entered" from="hitbox" to="." method="hurt"]

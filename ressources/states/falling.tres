@@ -1,0 +1,6 @@
+[gd_resource type="Resource" load_steps=2 format=3 uid="uid://dusl3gql664ii"]
+
+[ext_resource type="Script" path="res://ressources/states/falling.gd" id="1_80n1q"]
+
+[resource]
+script = ExtResource("1_80n1q")

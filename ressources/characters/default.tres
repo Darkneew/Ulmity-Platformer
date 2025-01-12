@@ -1,0 +1,17 @@
+[gd_resource type="Resource" script_class="Character" load_steps=2 format=3 uid="uid://ddgpuwugqr4qv"]
+
+[ext_resource type="Script" path="res://ressources/characters/character.gd" id="1_g85q4"]
+
+[resource]
+script = ExtResource("1_g85q4")
+lives = 3
+speed = 1300.0
+min_jump_velocity = 500.0
+max_jump_velocity = 1800.0
+allowed_jumping_time = 200.0
+midair_clumsiness = 500.0
+push_strength = 1000.0
+interaction_layer = 16
+jump_key = &"ui_accept"
+left_key = &"ui_left"
+right_key = &"ui_right"

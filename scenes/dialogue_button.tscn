@@ -1,0 +1,7 @@
+[gd_scene load_steps=2 format=3 uid="uid://cbnqufnpe5opd"]
+
+[ext_resource type="Theme" uid="uid://ct4kxfgisomwe" path="res://UI/dialogue button.tres" id="1_rwpdi"]
+
+[node name="dialogue button" type="Button"]
+theme = ExtResource("1_rwpdi")
+text = "texte"

@@ -1,0 +1,16 @@
+[gd_resource type="Resource" script_class="Terrain" load_steps=2 format=3 uid="uid://jrny62onrqja"]
+
+[ext_resource type="Script" path="res://ressources/terrains/terrain.gd" id="1_js1cv"]
+
+[resource]
+script = ExtResource("1_js1cv")
+gravity_direction = Vector2(0, 1)
+slowness = 1.0
+slopiness = 100.0
+crouch_speed_factor = 0.7
+midair_delay = 200.0
+gravity = 2000.0
+midair_gravity_factor = 0.3
+fall_gravity_factor = 1.7
+midair_limit = 0.3
+max_fall_speed = 3000.0

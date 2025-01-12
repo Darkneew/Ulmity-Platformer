@@ -1,0 +1,6 @@
+[gd_resource type="Resource" load_steps=2 format=3 uid="uid://bpu2m6gisksj8"]
+
+[ext_resource type="Script" path="res://ressources/states/walking.gd" id="1_64fpx"]
+
+[resource]
+script = ExtResource("1_64fpx")

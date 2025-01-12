@@ -1,0 +1,22 @@
+[gd_scene load_steps=3 format=3 uid="uid://csyi4ljrpft76"]
+
+[ext_resource type="Texture2D" uid="uid://bok6p0yc5as15" path="res://spritesheet/npc.png" id="1_petd8"]
+[ext_resource type="Theme" uid="uid://uhecttg57lt7" path="res://UI/main_theme.tres" id="2_r4lob"]
+
+[node name="Tortuc" type="Node2D"]
+
+[node name="tortruc" type="Sprite2D" parent="."]
+texture_filter = 1
+scale = Vector2(10, 10)
+texture = ExtResource("1_petd8")
+
+[node name="Text" type="RichTextLabel" parent="."]
+visible = false
+offset_left = -200.0
+offset_top = -416.0
+offset_right = 2241.0
+offset_bottom = -195.0
+theme = ExtResource("2_r4lob")
+theme_override_font_sizes/normal_font_size = 120
+text = "Hey, I'm Tortruc :-)
+"

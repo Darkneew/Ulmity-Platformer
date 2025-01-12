@@ -2,6 +2,10 @@ extends CanvasLayer
 
 const HEARTS = [preload("res://UI/coeur_1.png"), preload("res://UI/coeur_2.png"), preload("res://UI/coeur_3.png")]
 
+const BUTTON = preload("res://scenes/dialogue_button.tscn")
+
+@onready var dialogue_box: BoxContainer = $dialogue/BoxContainer
+
 func win():
 	$win.visible = true
 
@@ -24,3 +28,8 @@ func update_hearts(nb: int):
 		$Hearts.texture = null 
 	elif nb < 4:
 		$Hearts.texture = HEARTS[nb - 1]
+		
+func add_button(text):
+	var button = BUTTON.instantiate()
+	button.text = text
+	dialogue_box.add_child(button)
