@@ -1,25 +1,41 @@
-[gd_scene load_steps=13 format=3 uid="uid://mn3vcw5on6nt"]
+[gd_scene load_steps=10 format=3 uid="uid://mn3vcw5on6nt"]
 
 [ext_resource type="Script" path="res://script/level.gd" id="1_24hc8"]
 [ext_resource type="Texture2D" uid="uid://rw7jo8lwoeot" path="res://terrain/background.png" id="2_iq4qi"]
 [ext_resource type="PackedScene" uid="uid://ohkrhpdmbuar" path="res://scenes/flower.tscn" id="3_0cgj7"]
 [ext_resource type="PackedScene" uid="uid://dfvh2lplrs6iu" path="res://scenes/box.tscn" id="4_2n5nf"]
-[ext_resource type="PackedScene" uid="uid://bgcq1fc5jdwgc" path="res://scenes/character.tscn" id="5_4yt30"]
 [ext_resource type="PackedScene" uid="uid://d0fy2b5bg4m38" path="res://scenes/platform.tscn" id="6_mkb32"]
 [ext_resource type="Resource" uid="uid://dcxn15yx8yipc" path="res://ressources/terrains/ice.tres" id="7_3pdca"]
 [ext_resource type="Resource" uid="uid://jrny62onrqja" path="res://ressources/terrains/default.tres" id="7_dpiuq"]
 [ext_resource type="PackedScene" uid="uid://cm5yu1rr5sc3r" path="res://scenes/spike.tscn" id="7_xint8"]
-[ext_resource type="PackedScene" uid="uid://b7k2r82pmp42b" path="res://scenes/star.tscn" id="8_ld3x7"]
-[ext_resource type="PackedScene" uid="uid://c0dt0ww5ky3f4" path="res://scenes/ui.tscn" id="9_e201n"]
 [ext_resource type="PackedScene" uid="uid://f7wopyle57e2" path="res://scenes/terrain.tscn" id="10_euswy"]
 
-[node name="level" type="Node2D"]
+[node name="level" type="Node2D" node_paths=PackedStringArray("player1_position", "player2_position", "goal")]
 script = ExtResource("1_24hc8")
+player1_position = NodePath("Markers/p1_spawn")
+player2_position = NodePath("Markers/p2_spawn")
+goal = NodePath("Markers/goal")
 
 [node name="Background" type="Sprite2D" parent="."]
-position = Vector2(-3752, 936)
-scale = Vector2(10, 10)
+texture_filter = 2
+texture_repeat = 2
+position = Vector2(-3064, -464)
+scale = Vector2(12, 12)
 texture = ExtResource("2_iq4qi")
+region_enabled = true
+region_rect = Rect2(0, 0, 10000, 600)
+
+[node name="Markers" type="Node2D" parent="."]
+
+[node name="goal" type="Marker2D" parent="Markers"]
+position = Vector2(3968, -288)
+gizmo_extents = 93.3
+
+[node name="p2_spawn" type="Marker2D" parent="Markers"]
+position = Vector2(-4208, 904)
+
+[node name="p1_spawn" type="Marker2D" parent="Markers"]
+position = Vector2(-3856, 896)
 
 [node name="Flower" parent="." instance=ExtResource("3_0cgj7")]
 position = Vector2(1936, 176)
@@ -35,13 +51,6 @@ color = Color(0.640935, 0.463015, 1, 1)
 
 [node name="box" parent="." instance=ExtResource("4_2n5nf")]
 position = Vector2(-2832, 1048)
-
-[node name="character" parent="." instance=ExtResource("5_4yt30")]
-position = Vector2(-3752, 936)
-
-[node name="RemoteTransform2D" type="RemoteTransform2D" parent="character"]
-scale = Vector2(10, 10)
-remote_path = NodePath("../../Background")
 
 [node name="Map" type="Node2D" parent="."]
 
@@ -67,11 +76,3 @@ position = Vector2(-928, 680)
 
 [node name="spike2" parent="Map" instance=ExtResource("7_xint8")]
 position = Vector2(504, 672)
-
-[node name="star" parent="." instance=ExtResource("8_ld3x7")]
-position = Vector2(3688, -328)
-
-[node name="UI" parent="." instance=ExtResource("9_e201n")]
-
-[connection signal="heart_update" from="character" to="." method="heart_update"]
-[connection signal="end_game" from="star" to="." method="win"]

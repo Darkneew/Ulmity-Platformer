@@ -6,21 +6,26 @@ const BUTTON = preload("res://scenes/dialogue_button.tscn")
 
 @onready var dialogue_box: BoxContainer = $dialogue/BoxContainer
 
+var _restart: Callable
+
 func win():
 	$win.visible = true
 
 func restart():
-	get_tree().paused = false
 	$RestartButton.release_focus()
-	get_tree().reload_current_scene()
+	_restart.call()
 
 func pause():
 	if get_tree().paused:
-		$PauseLabel.visible = false
-		get_tree().paused = false
+		if $PauseLabel.visible:
+			$PauseLabel.visible = false
+			get_tree().paused = false
 	else:
-		$PauseLabel.visible = true
-		get_tree().paused = true
+		if $PauseLabel.visible:
+			get_tree().paused = true
+		else: 
+			$PauseLabel.visible = true
+			get_tree().paused = true
 	$PauseButton.release_focus()
 
 func update_hearts(nb: int):

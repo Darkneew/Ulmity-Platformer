@@ -1,0 +1,45 @@
+[gd_scene load_steps=2 format=3 uid="uid://dr0da8tkseavi"]
+
+[ext_resource type="Script" path="res://script/level_controller.gd" id="1_ooaq2"]
+
+[node name="Level" type="Node"]
+process_mode = 3
+script = ExtResource("1_ooaq2")
+
+[node name="HBoxContainer" type="HBoxContainer" parent="."]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+alignment = 1
+
+[node name="Player1Container" type="SubViewportContainer" parent="HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+stretch = true
+
+[node name="Viewport1" type="SubViewport" parent="HBoxContainer/Player1Container"]
+unique_name_in_owner = true
+handle_input_locally = false
+size = Vector2i(574, 648)
+render_target_update_mode = 4
+
+[node name="Camera1" type="Camera2D" parent="HBoxContainer/Player1Container/Viewport1"]
+ignore_rotation = false
+zoom = Vector2(0.2, 0.2)
+
+[node name="Player2Container" type="SubViewportContainer" parent="HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+stretch = true
+
+[node name="Viewport2" type="SubViewport" parent="HBoxContainer/Player2Container"]
+unique_name_in_owner = true
+handle_input_locally = false
+size = Vector2i(574, 648)
+render_target_update_mode = 4
+
+[node name="Camera2" type="Camera2D" parent="HBoxContainer/Player2Container/Viewport2"]
+ignore_rotation = false
+zoom = Vector2(0.2, 0.2)

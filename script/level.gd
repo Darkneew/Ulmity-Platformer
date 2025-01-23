@@ -1,15 +1,7 @@
 extends Node2D
+class_name Level
 
-signal next_level()
-
-func win():
-	$UI.win()
-	get_tree().paused = true
-	get_tree().create_timer(3).timeout.connect(change_level)
-	
-func change_level():
-	get_tree().paused = false
-	next_level.emit()
-
-func heart_update(nb):
-	$UI.update_hearts(nb)
+@export var player1_position: Marker2D
+@export var player2_position: Marker2D
+@export var goal: Marker2D
+@export var starting_terrain: Terrain = preload("res://ressources/terrains/default.tres")

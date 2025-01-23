@@ -26,6 +26,13 @@ var target_rotation: float = 0
 
 var last_jump_velocity : float
 
+func init(pos: Vector2, _terrain: Terrain, _state: State = states.floating_state):
+	rotation = target_rotation 
+	update_state.bind(_state).call_deferred()
+	update_terrain(_terrain)
+	position = pos 
+	velocity = Vector2.ZERO
+
 func y_speed():
 	return terrain.gravity_direction.dot(velocity)
 
@@ -55,5 +62,6 @@ func get_damage(_x):
 	$Sounds/HurtSound.play()
 	heart -= 1
 	heart_update.emit(heart)
+	print("yo")
 	if heart == 0:
 		get_tree().reload_current_scene.call_deferred()

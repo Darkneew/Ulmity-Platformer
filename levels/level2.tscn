@@ -1,22 +1,26 @@
-[gd_scene load_steps=10 format=3 uid="uid://cf3p6iisdje4o"]
+[gd_scene load_steps=7 format=3 uid="uid://cf3p6iisdje4o"]
 
 [ext_resource type="Script" path="res://script/level.gd" id="1_mw5p3"]
 [ext_resource type="Texture2D" uid="uid://rw7jo8lwoeot" path="res://terrain/background.png" id="2_m4xrw"]
 [ext_resource type="PackedScene" uid="uid://ohkrhpdmbuar" path="res://scenes/flower.tscn" id="3_aibhq"]
 [ext_resource type="PackedScene" uid="uid://dfvh2lplrs6iu" path="res://scenes/box.tscn" id="4_l2de5"]
-[ext_resource type="PackedScene" uid="uid://bgcq1fc5jdwgc" path="res://scenes/character.tscn" id="5_kw0c4"]
 [ext_resource type="PackedScene" uid="uid://d0fy2b5bg4m38" path="res://scenes/platform.tscn" id="6_1biqd"]
 [ext_resource type="PackedScene" uid="uid://cm5yu1rr5sc3r" path="res://scenes/spike.tscn" id="7_5de2d"]
-[ext_resource type="PackedScene" uid="uid://b7k2r82pmp42b" path="res://scenes/star.tscn" id="8_2834v"]
-[ext_resource type="PackedScene" uid="uid://c0dt0ww5ky3f4" path="res://scenes/ui.tscn" id="9_iyvfc"]
 
-[node name="level" type="Node2D"]
+[node name="level" type="Node2D" node_paths=PackedStringArray("player1_position", "player2_position", "goal")]
 script = ExtResource("1_mw5p3")
+player1_position = NodePath("Markers/p1_spawn")
+player2_position = NodePath("Markers/p2_spawn")
+goal = NodePath("Markers/goal")
 
 [node name="Background" type="Sprite2D" parent="."]
+texture_filter = 2
+texture_repeat = 2
 position = Vector2(-3064, -464)
-scale = Vector2(10, 10)
+scale = Vector2(12, 12)
 texture = ExtResource("2_m4xrw")
+region_enabled = true
+region_rect = Rect2(0, 0, 10000, 600)
 
 [node name="Flower" parent="." instance=ExtResource("3_aibhq")]
 position = Vector2(440, 248)
@@ -32,13 +36,6 @@ color = Color(0.640935, 0.463015, 1, 1)
 
 [node name="box" parent="." instance=ExtResource("4_l2de5")]
 position = Vector2(-2144, -352)
-
-[node name="character" parent="." instance=ExtResource("5_kw0c4")]
-position = Vector2(-3064, -464)
-
-[node name="RemoteTransform2D" type="RemoteTransform2D" parent="character"]
-scale = Vector2(10, 10)
-remote_path = NodePath("../../Background")
 
 [node name="Map" type="Node2D" parent="."]
 
@@ -58,10 +55,13 @@ position = Vector2(-360, 264)
 [node name="spike2" parent="Map" instance=ExtResource("7_5de2d")]
 position = Vector2(4233, 834)
 
-[node name="star" parent="." instance=ExtResource("8_2834v")]
-position = Vector2(5142, 278)
+[node name="Markers" type="Node2D" parent="."]
 
-[node name="UI" parent="." instance=ExtResource("9_iyvfc")]
+[node name="goal" type="Marker2D" parent="Markers"]
+position = Vector2(5388, 371)
 
-[connection signal="heart_update" from="character" to="." method="heart_update"]
-[connection signal="end_game" from="star" to="." method="win"]
+[node name="p2_spawn" type="Marker2D" parent="Markers"]
+position = Vector2(-3122, -499)
+
+[node name="p1_spawn" type="Marker2D" parent="Markers"]
+position = Vector2(-2566, -499)

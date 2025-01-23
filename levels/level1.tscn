@@ -1,26 +1,33 @@
-[gd_scene load_steps=12 format=3 uid="uid://qn2m22381lqr"]
+[gd_scene load_steps=9 format=3 uid="uid://qn2m22381lqr"]
 
 [ext_resource type="Script" path="res://script/level.gd" id="1_17m1b"]
 [ext_resource type="Texture2D" uid="uid://rw7jo8lwoeot" path="res://terrain/background.png" id="2_bdi1a"]
 [ext_resource type="PackedScene" uid="uid://ohkrhpdmbuar" path="res://scenes/flower.tscn" id="3_pp4ul"]
 [ext_resource type="PackedScene" uid="uid://dfvh2lplrs6iu" path="res://scenes/box.tscn" id="4_sbvyb"]
-[ext_resource type="PackedScene" uid="uid://bgcq1fc5jdwgc" path="res://scenes/character.tscn" id="5_y10yr"]
 [ext_resource type="PackedScene" uid="uid://d0fy2b5bg4m38" path="res://scenes/platform.tscn" id="6_hae63"]
-[ext_resource type="Resource" uid="uid://ctajg02va8e24" path="res://ressources/characters/char1.tres" id="7_diviv"]
-[ext_resource type="PackedScene" uid="uid://b7k2r82pmp42b" path="res://scenes/star.tscn" id="7_uy8wd"]
-[ext_resource type="PackedScene" uid="uid://c0dt0ww5ky3f4" path="res://scenes/ui.tscn" id="8_3gqsa"]
+[ext_resource type="PackedScene" uid="uid://cm5yu1rr5sc3r" path="res://scenes/spike.tscn" id="9_u3y5p"]
 [ext_resource type="PackedScene" uid="uid://oejyh8ito3xk" path="res://scenes/gravity_zone.tscn" id="9_x0etq"]
 [ext_resource type="PackedScene" uid="uid://csyi4ljrpft76" path="res://scenes/tortruc.tscn" id="10_g6ml5"]
 
-[node name="level" type="Node2D"]
+[node name="level" type="Node2D" node_paths=PackedStringArray("player1_position", "player2_position", "goal")]
 script = ExtResource("1_17m1b")
+player1_position = NodePath("Markers/Marker2D3")
+player2_position = NodePath("Markers/Marker2D")
+goal = NodePath("Markers/Marker2D2")
 
 [node name="Background" type="Sprite2D" parent="."]
+texture_filter = 2
+texture_repeat = 2
 position = Vector2(-3064, -464)
 scale = Vector2(12, 12)
 texture = ExtResource("2_bdi1a")
+region_enabled = true
+region_rect = Rect2(0, 0, 10000, 600)
 
 [node name="Details" type="Node2D" parent="."]
+
+[node name="tortruc" parent="Details" instance=ExtResource("10_g6ml5")]
+position = Vector2(-1736, -304)
 
 [node name="Flower" parent="Details" instance=ExtResource("3_pp4ul")]
 position = Vector2(440, 248)
@@ -34,31 +41,13 @@ color = Color(0.37458, 0.858668, 0.832496, 1)
 position = Vector2(-1884, -296)
 color = Color(0.640935, 0.463015, 1, 1)
 
-[node name="GravityZone" parent="Details" instance=ExtResource("9_x0etq")]
-position = Vector2(384, 24)
-scale = Vector2(2.23696, 1)
-
 [node name="box" parent="." instance=ExtResource("4_sbvyb")]
 position = Vector2(-520, 272)
 
-[node name="character1" parent="." instance=ExtResource("5_y10yr")]
-position = Vector2(-3064, -464)
-
-[node name="Camera2D" type="Camera2D" parent="character1"]
-ignore_rotation = false
-zoom = Vector2(0.2, 0.2)
-
-[node name="RemoteTransform2D" type="RemoteTransform2D" parent="character1"]
-scale = Vector2(12, 12)
-remote_path = NodePath("../../Background")
-update_rotation = false
-
-[node name="character" parent="." instance=ExtResource("5_y10yr")]
-modulate = Color(0.870588, 0.545098, 0.309804, 1)
-position = Vector2(-3064, -464)
-stats = ExtResource("7_diviv")
-
 [node name="Map" type="Node2D" parent="."]
+
+[node name="platform4" parent="Map" instance=ExtResource("6_hae63")]
+position = Vector2(-1808, 1464)
 
 [node name="platform" parent="Map" instance=ExtResource("6_hae63")]
 position = Vector2(-132, 380)
@@ -70,16 +59,22 @@ position = Vector2(3365, -520)
 position = Vector2(-3024, -192)
 rocky = true
 
-[node name="star" parent="." instance=ExtResource("7_uy8wd")]
-position = Vector2(4416, -1224)
+[node name="GravityZone" parent="Map" instance=ExtResource("9_x0etq")]
+position = Vector2(384, 24)
+scale = Vector2(2.23696, 1)
 
-[node name="UI" parent="." instance=ExtResource("8_3gqsa")]
+[node name="spike" parent="Map" instance=ExtResource("9_u3y5p")]
+position = Vector2(2936, -656)
 
-[node name="tortruc" parent="." instance=ExtResource("10_g6ml5")]
-position = Vector2(-1736, -304)
+[node name="Markers" type="Node2D" parent="."]
 
-[node name="viewport" type="SubViewport" parent="."]
-disable_3d = true
-own_world_3d = true
+[node name="Marker2D3" type="Marker2D" parent="Markers"]
+position = Vector2(-1592, 1224)
 
-[connection signal="end_game" from="star" to="." method="win"]
+[node name="Marker2D2" type="Marker2D" parent="Markers"]
+position = Vector2(5512, -1144)
+gizmo_extents = 486.2
+
+[node name="Marker2D" type="Marker2D" parent="Markers"]
+position = Vector2(-3024, -440)
+gizmo_extents = 486.2
