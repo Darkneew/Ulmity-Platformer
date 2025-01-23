@@ -1,9 +1,13 @@
 extends CharacterBody2D
 class_name CharacterController
 
+@export_group("Default")
 @export var terrain : Terrain
 @export var stats : Character
 @export var state : State
+
+@export_group("Display")
+@export var rotation_speed: float = 5
 
 var states = {
 	"idling_state": load("res://ressources/states/idling.tres"),
@@ -15,6 +19,7 @@ var states = {
 
 signal heart_update(nb: int)
 var heart: int
+var target_rotation: float = 0
 
 @onready var sprite : AnimatedSprite2D = $sprite
 @onready var jump_sound : AudioStreamPlayer = $Sounds/JumpSound
@@ -37,12 +42,13 @@ func update_state(_state: State):
 
 func _process(delta):
 	state.process(delta, self, terrain, stats)
+	rotation = lerpf(rotation, target_rotation, min(rotation_speed*delta, 1))
 
 func update_terrain(_terrain: Terrain):
 	if _terrain.gravity_direction.dot(terrain.gravity_direction) < 1:
 		up_direction = - _terrain.gravity_direction
-		rotation = _terrain.gravity_direction.angle() - PI/2
 		update_state(states.floating_state)
+		target_rotation = _terrain.gravity_direction.angle() - PI/2
 	terrain = _terrain
 	
 func get_damage(_x):

@@ -1,0 +1,17 @@
+[gd_resource type="Resource" script_class="Character" load_steps=2 format=3 uid="uid://ctajg02va8e24"]
+
+[ext_resource type="Script" path="res://ressources/characters/character.gd" id="1_i45j7"]
+
+[resource]
+script = ExtResource("1_i45j7")
+lives = 3
+speed = 1100.0
+min_jump_velocity = 500.0
+max_jump_velocity = 2000.0
+allowed_jumping_time = 200.0
+midair_clumsiness = 500.0
+push_strength = 1000.0
+interaction_layer = 16
+jump_key = &"p2-up"
+left_key = &"p2-left"
+right_key = &"p2-right"

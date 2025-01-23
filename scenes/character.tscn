@@ -212,10 +212,6 @@ terrain = ExtResource("2_nmt4x")
 stats = ExtResource("3_230s4")
 state = ExtResource("4_qi514")
 
-[node name="Camera2D" type="Camera2D" parent="."]
-ignore_rotation = false
-zoom = Vector2(0.2, 0.2)
-
 [node name="sprite" type="AnimatedSprite2D" parent="."]
 texture_filter = 1
 scale = Vector2(20, 20)
