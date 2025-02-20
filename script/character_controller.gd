@@ -17,7 +17,9 @@ var states = {
 	"walking_state": load("res://ressources/states/walking.tres")
 }
 
-signal heart_update(nb: int)
+const UI = preload("res://script/ui.gd")
+var ui: UI
+var score: int
 var heart: int
 var target_rotation: float = 0
 
@@ -27,6 +29,7 @@ var target_rotation: float = 0
 var last_jump_velocity : float
 
 func init(pos: Vector2, _terrain: Terrain, _state: State = states.floating_state):
+	score = 0
 	rotation = target_rotation 
 	update_state.bind(_state).call_deferred()
 	update_terrain(_terrain)
@@ -61,7 +64,7 @@ func update_terrain(_terrain: Terrain):
 func get_damage(_x):
 	$Sounds/HurtSound.play()
 	heart -= 1
-	heart_update.emit(heart)
+	ui.update_hearts(heart)
 	print("yo")
 	if heart == 0:
 		get_tree().reload_current_scene.call_deferred()

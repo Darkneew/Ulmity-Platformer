@@ -1,9 +1,63 @@
-[gd_scene load_steps=3 format=3 uid="uid://csyi4ljrpft76"]
+[gd_scene load_steps=15 format=3 uid="uid://csyi4ljrpft76"]
 
+[ext_resource type="Script" path="res://script/NPC_chat.gd" id="1_25aid"]
 [ext_resource type="Texture2D" uid="uid://bok6p0yc5as15" path="res://spritesheet/npc.png" id="1_petd8"]
-[ext_resource type="Theme" uid="uid://uhecttg57lt7" path="res://UI/main_theme.tres" id="2_r4lob"]
+[ext_resource type="Script" path="res://script/answer.gd" id="2_h8dj1"]
+[ext_resource type="Script" path="res://script/message_unit.gd" id="2_w6c4w"]
+[ext_resource type="Theme" uid="uid://ct4kxfgisomwe" path="res://UI/dialogue button.tres" id="3_3x5hv"]
 
-[node name="Tortuc" type="Node2D"]
+[sub_resource type="Resource" id="Resource_35ekt"]
+script = ExtResource("2_h8dj1")
+text = "Hi!"
+ref = 2
+
+[sub_resource type="Resource" id="Resource_pddom"]
+script = ExtResource("2_h8dj1")
+text = "Goodbye."
+ref = 1
+
+[sub_resource type="Resource" id="Resource_613w1"]
+script = ExtResource("2_w6c4w")
+text = "Hey!"
+score = 0
+answers = Array[ExtResource("2_h8dj1")]([SubResource("Resource_35ekt"), SubResource("Resource_pddom")])
+
+[sub_resource type="Resource" id="Resource_mf088"]
+script = ExtResource("2_w6c4w")
+text = "Goodbye then."
+score = -1
+answers = Array[ExtResource("2_h8dj1")]([])
+
+[sub_resource type="Resource" id="Resource_gy4pc"]
+script = ExtResource("2_h8dj1")
+text = "Yes"
+ref = 3
+
+[sub_resource type="Resource" id="Resource_j1let"]
+script = ExtResource("2_h8dj1")
+text = "No."
+ref = 1
+
+[sub_resource type="Resource" id="Resource_6b7iu"]
+script = ExtResource("2_w6c4w")
+text = "Let's be friends"
+score = 1
+answers = Array[ExtResource("2_h8dj1")]([SubResource("Resource_gy4pc"), SubResource("Resource_j1let")])
+
+[sub_resource type="Resource" id="Resource_t377u"]
+script = ExtResource("2_w6c4w")
+text = "Yay"
+score = 1
+answers = Array[ExtResource("2_h8dj1")]([])
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_qi0nj"]
+size = Vector2(1632, 1076)
+
+[node name="Tortuc" type="Node2D" node_paths=PackedStringArray("text_holder", "dialogue_zone")]
+script = ExtResource("1_25aid")
+text_holder = NodePath("Text")
+dialogue_zone = NodePath("DialogueZone")
+dialogue = Array[ExtResource("2_w6c4w")]([SubResource("Resource_613w1"), SubResource("Resource_mf088"), SubResource("Resource_6b7iu"), SubResource("Resource_t377u")])
 
 [node name="tortruc" type="Sprite2D" parent="."]
 texture_filter = 1
@@ -16,7 +70,13 @@ offset_left = -200.0
 offset_top = -416.0
 offset_right = 2241.0
 offset_bottom = -195.0
-theme = ExtResource("2_r4lob")
-theme_override_font_sizes/normal_font_size = 120
-text = "Hey, I'm Tortruc :-)
+theme = ExtResource("3_3x5hv")
+text = "Hey, I'm Tortruc
 "
+
+[node name="DialogueZone" type="Area2D" parent="."]
+collision_layer = 0
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="DialogueZone"]
+position = Vector2(0, -238)
+shape = SubResource("RectangleShape2D_qi0nj")

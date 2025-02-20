@@ -16,9 +16,6 @@ func change_level():
 	get_tree().paused = false
 	next_level.emit()
 
-func heart_update(nb: int, ui: Node):
-	ui.update_hearts(nb)
-
 func start_level(level: PackedScene, player1: Character, player2: Character):
 	
 	# Wold preparation
@@ -40,7 +37,7 @@ func start_level(level: PackedScene, player1: Character, player2: Character):
 	p1.stats = player1
 	p1.init(world.player1_position.position, world.starting_terrain)
 	world.add_child(p1)
-	p1.heart_update.connect(heart_update.bind(ui1))
+	p1.ui = ui1
 	var rc = RemoteTransform2D.new()
 	rc.remote_path = %Viewport1/Camera1.get_path()
 	p1.add_child(rc)
@@ -51,7 +48,7 @@ func start_level(level: PackedScene, player1: Character, player2: Character):
 	p2.stats = player2
 	p2.init(world.player2_position.position, world.starting_terrain)
 	world.add_child(p2)
-	p2.heart_update.connect(heart_update.bind(ui2))
+	p2.ui = ui2
 	var _rc = RemoteTransform2D.new()
 	_rc.remote_path = %Viewport2/Camera2.get_path()
 	p2.add_child(_rc)

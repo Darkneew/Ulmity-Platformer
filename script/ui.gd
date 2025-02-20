@@ -34,7 +34,12 @@ func update_hearts(nb: int):
 	elif nb < 4:
 		$Hearts.texture = HEARTS[nb - 1]
 		
-func add_button(text):
+func add_button(text, action):
 	var button = BUTTON.instantiate()
 	button.text = text
 	dialogue_box.add_child(button)
+	button.button_down.connect(action)
+	
+func reset_button():
+	while dialogue_box.get_child_count() > 0:
+		dialogue_box.remove_child(dialogue_box.get_child(0))
