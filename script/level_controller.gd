@@ -5,6 +5,10 @@ const CHARACTER: PackedScene = preload("res://scenes/character.tscn")
 const STAR: PackedScene = preload("res://scenes/star.tscn")
 
 signal next_level()
+signal home()
+
+func go_home():
+	home.emit()
 
 func win(ui1, ui2):
 	ui1.win()
@@ -18,11 +22,18 @@ func change_level():
 
 func start_level(level: PackedScene, player1: Character, player2: Character):
 	
+	var highscore = 30 # a determiner 
+	$Control.start(highscore)
+	
 	# Wold preparation
 	var world : Level = level.instantiate()
 	world.process_mode = Node.PROCESS_MODE_PAUSABLE
 	var ui1 = UI.instantiate()
 	var ui2 = UI.instantiate()
+	ui1.restart_key = player1.restart_key
+	ui1.pause_key = player1.pause_key
+	ui2.restart_key = player2.restart_key
+	ui2.pause_key = player2.pause_key
 	%Viewport1.add_child(world)
 	%Viewport1.add_child(ui1)
 	%Viewport2.world_2d = %Viewport1.world_2d

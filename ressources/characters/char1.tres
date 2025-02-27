@@ -15,3 +15,5 @@ interaction_layer = 16
 jump_key = &"p2-up"
 left_key = &"p2-left"
 right_key = &"p2-right"
+pause_key = &"p2-pause"
+restart_key = &"p2-restart"

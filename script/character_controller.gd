@@ -65,6 +65,5 @@ func get_damage(_x):
 	$Sounds/HurtSound.play()
 	heart -= 1
 	ui.update_hearts(heart)
-	print("yo")
 	if heart == 0:
 		get_tree().reload_current_scene.call_deferred()

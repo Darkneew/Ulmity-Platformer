@@ -1,0 +1,60 @@
+[gd_scene load_steps=3 format=3 uid="uid://cridgutb20hx"]
+
+[ext_resource type="Theme" uid="uid://uhecttg57lt7" path="res://UI/main_theme.tres" id="1_klluj"]
+[ext_resource type="Script" path="res://script/global_ui.gd" id="1_mdgbd"]
+
+[node name="Control" type="CanvasLayer"]
+script = ExtResource("1_mdgbd")
+
+[node name="ToHighScore" type="ProgressBar" parent="."]
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -128.0
+offset_top = -48.0
+offset_right = 128.0
+offset_bottom = -8.0
+grow_horizontal = 2
+grow_vertical = 0
+theme = ExtResource("1_klluj")
+value = 100.0
+show_percentage = false
+
+[node name="TimerLabel" type="Label" parent="."]
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -27.0
+offset_top = -40.0
+offset_right = 36.0
+offset_bottom = -9.0
+grow_horizontal = 2
+grow_vertical = 0
+theme = ExtResource("1_klluj")
+text = "00:00"
+
+[node name="Button" type="Button" parent="."]
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -48.0
+offset_top = -96.0
+offset_right = 50.0
+offset_bottom = -64.0
+grow_horizontal = 2
+grow_vertical = 0
+theme = ExtResource("1_klluj")
+text = "Home"
+
+[node name="Timer" type="Timer" parent="."]
+process_mode = 1
+wait_time = 60.0
+
+[connection signal="pressed" from="Button" to="." method="go_home"]
+[connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]

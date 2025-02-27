@@ -1,13 +1,13 @@
 [gd_scene load_steps=3 format=3 uid="uid://f7wopyle57e2"]
 
-[ext_resource type="Script" path="res://terrain.gd" id="1_c08i8"]
+[ext_resource type="Script" path="res://script/terrain.gd" id="1_o0qnb"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_t17je"]
 size = Vector2(306, 138)
 
 [node name="Terrain" type="Area2D"]
 collision_layer = 0
-script = ExtResource("1_c08i8")
+script = ExtResource("1_o0qnb")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 position = Vector2(143, 59)

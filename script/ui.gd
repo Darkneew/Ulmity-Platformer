@@ -7,6 +7,8 @@ const BUTTON = preload("res://scenes/dialogue_button.tscn")
 @onready var dialogue_box: BoxContainer = $dialogue/BoxContainer
 
 var _restart: Callable
+var pause_key: StringName
+var restart_key: StringName
 
 func win():
 	$win.visible = true
@@ -43,3 +45,9 @@ func add_button(text, action):
 func reset_button():
 	while dialogue_box.get_child_count() > 0:
 		dialogue_box.remove_child(dialogue_box.get_child(0))
+
+func _process(_delta):
+	if Input.is_action_just_pressed(pause_key):
+		pause()
+	if Input.is_action_just_pressed(restart_key):
+		restart()

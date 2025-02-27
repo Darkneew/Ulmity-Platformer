@@ -1,4 +1,4 @@
-[gd_resource type="Theme" load_steps=7 format=3 uid="uid://uhecttg57lt7"]
+[gd_resource type="Theme" load_steps=9 format=3 uid="uid://uhecttg57lt7"]
 
 [ext_resource type="FontFile" uid="uid://gi7x41g533kg" path="res://UI/font.ttf" id="1_thrbv"]
 
@@ -11,6 +11,20 @@
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_wruyk"]
 
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_q8oo0"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_4dnuu"]
+bg_color = Color(0, 0, 0, 0.470588)
+corner_radius_top_left = 10
+corner_radius_top_right = 10
+corner_radius_bottom_right = 10
+corner_radius_bottom_left = 10
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_tjhml"]
+bg_color = Color(0.815686, 0.32549, 0.25098, 1)
+corner_radius_top_left = 10
+corner_radius_top_right = 10
+corner_radius_bottom_right = 10
+corner_radius_bottom_left = 10
 
 [resource]
 Button/colors/font_color = Color(0.815686, 0.32549, 0.25098, 1)
@@ -25,8 +39,12 @@ Button/styles/focus = SubResource("StyleBoxEmpty_0dgpv")
 Button/styles/hover = SubResource("StyleBoxEmpty_iih6r")
 Button/styles/normal = SubResource("StyleBoxEmpty_wruyk")
 Button/styles/pressed = SubResource("StyleBoxEmpty_q8oo0")
+Label/font_sizes/font_size = 32
+Label/fonts/font = ExtResource("1_thrbv")
+ProgressBar/styles/background = SubResource("StyleBoxFlat_4dnuu")
+ProgressBar/styles/fill = SubResource("StyleBoxFlat_tjhml")
 RichTextLabel/colors/default_color = Color(0.815686, 0.32549, 0.25098, 1)
 RichTextLabel/colors/font_outline_color = Color(0.270588, 0.105882, 0.0156863, 1)
 RichTextLabel/constants/outline_size = 53
-RichTextLabel/font_sizes/normal_font_size = 200
+RichTextLabel/font_sizes/normal_font_size = 100
 RichTextLabel/fonts/normal_font = ExtResource("1_thrbv")

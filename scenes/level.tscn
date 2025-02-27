@@ -1,6 +1,7 @@
-[gd_scene load_steps=2 format=3 uid="uid://dr0da8tkseavi"]
+[gd_scene load_steps=3 format=3 uid="uid://dr0da8tkseavi"]
 
 [ext_resource type="Script" path="res://script/level_controller.gd" id="1_ooaq2"]
+[ext_resource type="PackedScene" uid="uid://cridgutb20hx" path="res://scenes/global_ui.tscn" id="2_gdxu8"]
 
 [node name="Level" type="Node"]
 process_mode = 3
@@ -42,3 +43,7 @@ render_target_update_mode = 4
 [node name="Camera2" type="Camera2D" parent="HBoxContainer/Player2Container/Viewport2"]
 ignore_rotation = false
 zoom = Vector2(0.2, 0.2)
+
+[node name="Control" parent="." instance=ExtResource("2_gdxu8")]
+
+[connection signal="home" from="Control" to="." method="go_home"]
