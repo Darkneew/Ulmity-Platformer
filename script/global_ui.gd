@@ -10,7 +10,11 @@ func start(_high_score: float):
 	$Timer.start()
 
 func go_home():
-	home.emit()
+	if not $Timer.paused:
+		home.emit()
+
+func stop_time():
+	$Timer.paused = true
 
 func _process(_delta):
 	var minutes_prefix = ""
@@ -20,7 +24,10 @@ func _process(_delta):
 	if $Timer.time_left > 50:
 		seconds_prefix += "0"
 	$TimerLabel.text = minutes_prefix + str(minutes) + ":" + seconds_prefix + str(floorf( 60 - $Timer.time_left))
-	$ToHighScore.value = min(100, (minutes * 60 + 60 - $Timer.time_left) / high_score * 100)
+	$ToHighScore.value = min(100, get_time()/ high_score * 100)
+
+func get_time():
+	return minutes * 60 + 60 - $Timer.time_left
 
 func _on_timer_timeout():
 	minutes += 1

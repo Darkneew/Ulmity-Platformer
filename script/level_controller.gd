@@ -4,26 +4,31 @@ const UI: PackedScene = preload("res://scenes/ui.tscn")
 const CHARACTER: PackedScene = preload("res://scenes/character.tscn")
 const STAR: PackedScene = preload("res://scenes/star.tscn")
 
-signal next_level()
+signal next_level(previous_score, score)
 signal home()
+signal change_high_score(score: float)
+
+var high_score: float
 
 func go_home():
 	home.emit()
 
 func win(ui1, ui2):
+	$Control.stop_time()
 	ui1.win()
 	ui2.win()
 	get_tree().paused = true
-	get_tree().create_timer(3).timeout.connect(change_level)
+	if $Control.get_time() < high_score:
+		change_high_score.emit($Control.get_time())
+	get_tree().create_timer(1).timeout.connect(change_level)
 	
 func change_level():
 	get_tree().paused = false
-	next_level.emit()
+	next_level.emit(high_score, $Control.get_time())
 
-func start_level(level: PackedScene, player1: Character, player2: Character):
-	
-	var highscore = 30 # a determiner 
-	$Control.start(highscore)
+func start_level(level: PackedScene, player1: Character, player2: Character, hs: float):
+	high_score = hs
+	$Control.start(hs)
 	
 	# Wold preparation
 	var world : Level = level.instantiate()
