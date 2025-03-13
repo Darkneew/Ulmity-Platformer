@@ -1,0 +1,170 @@
+[gd_scene load_steps=7 format=3 uid="uid://cok2yxlnotbe"]
+
+[ext_resource type="Texture2D" uid="uid://p12jhccc8sl4" path="res://UI/wood.jpg" id="1_g37ty"]
+[ext_resource type="Script" path="res://scenes/taquin.gd" id="1_l4hla"]
+[ext_resource type="Theme" uid="uid://cccsjb6isbj2h" path="res://UI/taquin.tres" id="2_dfrap"]
+[ext_resource type="Texture2D" uid="uid://dy2sessjw4udh" path="res://UI/taquin_images/im1.png" id="2_x8o6f"]
+[ext_resource type="Texture2D" uid="uid://bhqm0shdkebvw" path="res://UI/taquin_images/im2.png" id="4_4ph6a"]
+[ext_resource type="Texture2D" uid="uid://bmfsyhy5iyypt" path="res://UI/taquin_images/im3.png" id="5_ymrpo"]
+
+[node name="Taquin" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_l4hla")
+
+[node name="Board" type="TextureRect" parent="."]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -300.0
+offset_top = -300.0
+offset_right = 300.0
+offset_bottom = 300.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("1_g37ty")
+expand_mode = 1
+stretch_mode = 1
+
+[node name="Rect1" type="TextureRect" parent="Board"]
+texture_filter = 1
+layout_mode = 0
+offset_right = 200.0
+offset_bottom = 200.0
+texture = ExtResource("2_x8o6f")
+expand_mode = 1
+
+[node name="Button" type="Button" parent="Board/Rect1"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme = ExtResource("2_dfrap")
+
+[node name="Rect2" type="TextureRect" parent="Board"]
+texture_filter = 1
+layout_mode = 0
+offset_left = 200.0
+offset_right = 400.0
+offset_bottom = 200.0
+texture = ExtResource("4_4ph6a")
+expand_mode = 1
+
+[node name="Button" type="Button" parent="Board/Rect2"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme = ExtResource("2_dfrap")
+
+[node name="Rect3" type="TextureRect" parent="Board"]
+texture_filter = 1
+layout_mode = 0
+offset_left = 400.0
+offset_right = 600.0
+offset_bottom = 200.0
+texture = ExtResource("5_ymrpo")
+expand_mode = 1
+
+[node name="Button" type="Button" parent="Board/Rect3"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme = ExtResource("2_dfrap")
+
+[node name="Rect4" type="ColorRect" parent="Board"]
+offset_top = 200.0
+offset_right = 200.0
+offset_bottom = 400.0
+color = Color(1, 1, 0.545098, 1)
+
+[node name="Button" type="Button" parent="Board/Rect4"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme = ExtResource("2_dfrap")
+text = "4"
+
+[node name="Rect5" type="ColorRect" parent="Board"]
+offset_left = 200.0
+offset_top = 200.0
+offset_right = 400.0
+offset_bottom = 400.0
+color = Color(1, 0.352941, 0.411765, 1)
+
+[node name="Button" type="Button" parent="Board/Rect5"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme = ExtResource("2_dfrap")
+text = "5"
+
+[node name="Rect6" type="ColorRect" parent="Board"]
+offset_left = 400.0
+offset_top = 200.0
+offset_right = 600.0
+offset_bottom = 400.0
+color = Color(0.513726, 1, 0.443137, 1)
+
+[node name="Button" type="Button" parent="Board/Rect6"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme = ExtResource("2_dfrap")
+text = "6"
+
+[node name="Rect7" type="ColorRect" parent="Board"]
+offset_top = 400.0
+offset_right = 200.0
+offset_bottom = 600.0
+color = Color(0.87451, 0.54902, 0.160784, 1)
+
+[node name="Button" type="Button" parent="Board/Rect7"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme = ExtResource("2_dfrap")
+text = "7"
+
+[node name="Rect8" type="ColorRect" parent="Board"]
+offset_left = 200.0
+offset_top = 400.0
+offset_right = 400.0
+offset_bottom = 600.0
+color = Color(0.423529, 0.556863, 0.929412, 1)
+
+[node name="Button" type="Button" parent="Board/Rect8"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme = ExtResource("2_dfrap")
+text = "8"

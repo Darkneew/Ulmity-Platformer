@@ -1,0 +1,27 @@
+[gd_resource type="Theme" load_steps=7 format=3 uid="uid://cccsjb6isbj2h"]
+
+[ext_resource type="FontFile" uid="uid://602t0xs1acc5" path="res://UI/chatfont.ttf" id="1_0ft5e"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_7augq"]
+bg_color = Color(0.6, 0.6, 0.6, 0)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_lw1l0"]
+bg_color = Color(0, 0, 0, 0)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_u6lt4"]
+bg_color = Color(0, 0, 0, 0.482353)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_4ua7y"]
+bg_color = Color(0.6, 0.6, 0.6, 0)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_b35vo"]
+bg_color = Color(0.6, 0.6, 0.6, 0)
+
+[resource]
+Button/font_sizes/font_size = 70
+Button/fonts/font = ExtResource("1_0ft5e")
+Button/styles/disabled = SubResource("StyleBoxFlat_7augq")
+Button/styles/focus = SubResource("StyleBoxFlat_lw1l0")
+Button/styles/hover = SubResource("StyleBoxFlat_u6lt4")
+Button/styles/normal = SubResource("StyleBoxFlat_4ua7y")
+Button/styles/pressed = SubResource("StyleBoxFlat_b35vo")

@@ -1,4 +1,4 @@
-[gd_scene load_steps=7 format=3 uid="uid://cf3p6iisdje4o"]
+[gd_scene load_steps=8 format=3 uid="uid://cf3p6iisdje4o"]
 
 [ext_resource type="Script" path="res://script/level.gd" id="1_mw5p3"]
 [ext_resource type="Texture2D" uid="uid://rw7jo8lwoeot" path="res://terrain/background.png" id="2_m4xrw"]
@@ -6,6 +6,7 @@
 [ext_resource type="PackedScene" uid="uid://dfvh2lplrs6iu" path="res://scenes/box.tscn" id="4_l2de5"]
 [ext_resource type="PackedScene" uid="uid://d0fy2b5bg4m38" path="res://scenes/platform.tscn" id="6_1biqd"]
 [ext_resource type="PackedScene" uid="uid://cm5yu1rr5sc3r" path="res://scenes/spike.tscn" id="7_5de2d"]
+[ext_resource type="PackedScene" uid="uid://o0t776nupva" path="res://scenes/locked_door.tscn" id="7_dclgc"]
 
 [node name="level" type="Node2D" node_paths=PackedStringArray("player1_position", "player2_position", "goal")]
 script = ExtResource("1_mw5p3")
@@ -39,6 +40,9 @@ position = Vector2(-2144, -352)
 
 [node name="Map" type="Node2D" parent="."]
 
+[node name="platform4" parent="Map" instance=ExtResource("6_1biqd")]
+position = Vector2(7836, 491)
+
 [node name="platform" parent="Map" instance=ExtResource("6_1biqd")]
 position = Vector2(-132, 380)
 
@@ -55,6 +59,9 @@ position = Vector2(-360, 264)
 [node name="spike2" parent="Map" instance=ExtResource("7_5de2d")]
 position = Vector2(4233, 834)
 
+[node name="LockedDoor" parent="Map" instance=ExtResource("7_dclgc")]
+position = Vector2(7481, 153)
+
 [node name="Markers" type="Node2D" parent="."]
 
 [node name="goal" type="Marker2D" parent="Markers"]
@@ -64,4 +71,6 @@ position = Vector2(5388, 371)
 position = Vector2(-3122, -499)
 
 [node name="p1_spawn" type="Marker2D" parent="Markers"]
-position = Vector2(-2566, -499)
+position = Vector2(9192, 218)
+
+[connection signal="taquin" from="Map/LockedDoor" to="." method="play_taquin"]

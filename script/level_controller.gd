@@ -7,11 +7,15 @@ const STAR: PackedScene = preload("res://scenes/star.tscn")
 signal next_level(previous_score, score)
 signal home()
 signal change_high_score(score: float)
+signal taquin(callback)
 
 var high_score: float
 
 func go_home():
 	home.emit()
+
+func play_taquin(callback):
+	taquin.emit(callback)
 
 func win(ui1, ui2):
 	$Control.stop_time()
@@ -47,6 +51,7 @@ func start_level(level: PackedScene, player1: Character, player2: Character, hs:
 	world.add_child(star)
 	star.position = world.goal.position
 	star.end_game.connect(win.bind(ui1, ui2))
+	world.taquin.connect(play_taquin)
 	
 	# Player 1 creation
 	var p1: CharacterController = CHARACTER.instantiate()

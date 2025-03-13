@@ -4,6 +4,7 @@ var rng = RandomNumberGenerator.new()
 const MENU = preload("res://scenes/menu.tscn")
 const LEVEL = preload("res://scenes/level.tscn")
 const TRANSITION = preload("res://scenes/transition.tscn")
+const TAQUIN = preload("res://scenes/taquin.tscn")
 
 const levels = [
 	preload("res://levels/level1.tscn"), 
@@ -37,6 +38,27 @@ func transition(text, callback, sub="", time = 5):
 	my_scene.init(text, sub) 
 	add_child(my_scene)
 	get_tree().create_timer(time).timeout.connect(callback)
+
+func end_taquin(iswin, scene, callback):
+	if iswin:
+		transition("Well player", back_to_scene.bind(scene, callback.bind(iswin)), "", 3)
+	else:
+		transition("Try again another time", back_to_scene.bind(scene, callback.bind(iswin)), "", 2)
+
+func back_to_scene(scene, callback = null):
+	get_tree().paused = false
+	remove_child.call_deferred(get_child(1))
+	add_child(scene)
+	callback.call()
+
+func play_taquin(callback):
+	# the callback should take one argument, wether the game was won or not 
+	get_tree().paused = false
+	var scene = get_child(1)
+	remove_child.call_deferred(scene)
+	var my_taq = TAQUIN.instantiate()
+	add_child(my_taq)
+	my_taq.win.connect(end_taquin.bind(scene, callback))
 
 func read_high_score(level):
 	var json = JSON.new()
@@ -124,3 +146,4 @@ func load_level(i: int):
 		our_level.next_level.connect(next_level.bind(i+1))
 		our_level.change_high_score.connect(write_high_score.bind(i))
 		our_level.home.connect(load_menu)
+		our_level.taquin.connect(play_taquin)

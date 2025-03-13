@@ -1,0 +1,221 @@
+[gd_scene load_steps=13 format=3 uid="uid://cok2yxlnotbe"]
+
+[ext_resource type="Texture2D" uid="uid://p12jhccc8sl4" path="res://UI/wood.jpg" id="1_g37ty"]
+[ext_resource type="Script" path="res://taquin.gd" id="1_tgd6m"]
+[ext_resource type="Theme" uid="uid://cccsjb6isbj2h" path="res://UI/taquin.tres" id="2_dfrap"]
+[ext_resource type="Texture2D" uid="uid://ceg76jwycbhxp" path="res://UI/taquin_images/im9.png" id="3_clwbr"]
+[ext_resource type="Texture2D" uid="uid://bhqm0shdkebvw" path="res://UI/taquin_images/im2.png" id="4_4ph6a"]
+[ext_resource type="Texture2D" uid="uid://bmfsyhy5iyypt" path="res://UI/taquin_images/im3.png" id="5_ymrpo"]
+[ext_resource type="Texture2D" uid="uid://dfaxfjf3jmlie" path="res://UI/taquin_images/im4.png" id="7_2c6l8"]
+[ext_resource type="Texture2D" uid="uid://baa2dje4q0ndf" path="res://UI/taquin_images/im5.png" id="8_1ukww"]
+[ext_resource type="Texture2D" uid="uid://dxcftxas2ed35" path="res://UI/taquin_images/im6.png" id="9_xxlea"]
+[ext_resource type="Texture2D" uid="uid://cx5por4cg8eog" path="res://UI/taquin_images/im7.png" id="10_1qd8f"]
+[ext_resource type="Texture2D" uid="uid://dl762xuk07hjg" path="res://UI/taquin_images/im8.png" id="11_l660n"]
+[ext_resource type="Theme" uid="uid://uhecttg57lt7" path="res://UI/main_theme.tres" id="12_xnhfd"]
+
+[node name="Taquin" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_tgd6m")
+
+[node name="TextureRect" type="TextureRect" parent="."]
+self_modulate = Color(0.473976, 0.473976, 0.473976, 1)
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("1_g37ty")
+expand_mode = 1
+stretch_mode = 1
+
+[node name="Board" type="TextureRect" parent="."]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -300.0
+offset_top = -300.0
+offset_right = 300.0
+offset_bottom = 300.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("1_g37ty")
+expand_mode = 1
+stretch_mode = 1
+
+[node name="Rect1" type="TextureRect" parent="Board"]
+texture_filter = 1
+layout_mode = 0
+offset_left = 400.0
+offset_top = 400.0
+offset_right = 600.0
+offset_bottom = 600.0
+texture = ExtResource("3_clwbr")
+expand_mode = 1
+
+[node name="Button" type="Button" parent="Board/Rect1"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme = ExtResource("2_dfrap")
+
+[node name="Rect2" type="TextureRect" parent="Board"]
+texture_filter = 1
+layout_mode = 0
+offset_left = 200.0
+offset_right = 400.0
+offset_bottom = 200.0
+texture = ExtResource("4_4ph6a")
+expand_mode = 1
+
+[node name="Button" type="Button" parent="Board/Rect2"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme = ExtResource("2_dfrap")
+
+[node name="Rect3" type="TextureRect" parent="Board"]
+texture_filter = 1
+layout_mode = 0
+offset_left = 400.0
+offset_right = 600.0
+offset_bottom = 200.0
+texture = ExtResource("5_ymrpo")
+expand_mode = 1
+
+[node name="Button" type="Button" parent="Board/Rect3"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme = ExtResource("2_dfrap")
+
+[node name="Rect4" type="TextureRect" parent="Board"]
+texture_filter = 1
+layout_mode = 0
+offset_top = 200.0
+offset_right = 200.0
+offset_bottom = 400.0
+texture = ExtResource("7_2c6l8")
+expand_mode = 1
+
+[node name="Button" type="Button" parent="Board/Rect4"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme = ExtResource("2_dfrap")
+
+[node name="Rect5" type="TextureRect" parent="Board"]
+texture_filter = 1
+layout_mode = 0
+offset_left = 200.0
+offset_top = 200.0
+offset_right = 400.0
+offset_bottom = 400.0
+texture = ExtResource("8_1ukww")
+expand_mode = 1
+
+[node name="Button" type="Button" parent="Board/Rect5"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme = ExtResource("2_dfrap")
+
+[node name="Rect6" type="TextureRect" parent="Board"]
+texture_filter = 1
+layout_mode = 0
+offset_left = 400.0
+offset_top = 200.0
+offset_right = 600.0
+offset_bottom = 400.0
+texture = ExtResource("9_xxlea")
+expand_mode = 1
+
+[node name="Button" type="Button" parent="Board/Rect6"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme = ExtResource("2_dfrap")
+
+[node name="Rect7" type="TextureRect" parent="Board"]
+texture_filter = 1
+layout_mode = 0
+offset_top = 400.0
+offset_right = 200.0
+offset_bottom = 600.0
+texture = ExtResource("10_1qd8f")
+
+[node name="Button" type="Button" parent="Board/Rect7"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme = ExtResource("2_dfrap")
+
+[node name="Rect8" type="TextureRect" parent="Board"]
+texture_filter = 1
+layout_mode = 0
+offset_left = 200.0
+offset_top = 400.0
+offset_right = 400.0
+offset_bottom = 600.0
+texture = ExtResource("11_l660n")
+
+[node name="Button" type="Button" parent="Board/Rect8"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme = ExtResource("2_dfrap")
+
+[node name="SlidingTimer" type="Timer" parent="."]
+wait_time = 0.5
+one_shot = true
+
+[node name="Home" type="Button" parent="."]
+layout_mode = 1
+offset_right = 176.0
+offset_bottom = 96.0
+theme = ExtResource("12_xnhfd")
+theme_override_font_sizes/font_size = 50
+text = "Back"
+
+[connection signal="pressed" from="Board/Rect1/Button" to="." method="move" binds= [0]]
+[connection signal="pressed" from="Board/Rect2/Button" to="." method="move" binds= [1]]
+[connection signal="pressed" from="Board/Rect3/Button" to="." method="move" binds= [2]]
+[connection signal="pressed" from="Board/Rect4/Button" to="." method="move" binds= [3]]
+[connection signal="pressed" from="Board/Rect5/Button" to="." method="move" binds= [4]]
+[connection signal="pressed" from="Board/Rect6/Button" to="." method="move" binds= [5]]
+[connection signal="pressed" from="Board/Rect7/Button" to="." method="move" binds= [6]]
+[connection signal="pressed" from="Board/Rect8/Button" to="." method="move" binds= [7]]
+[connection signal="timeout" from="SlidingTimer" to="." method="_on_sliding_timer_timeout"]
+[connection signal="pressed" from="Home" to="." method="_on_home_pressed"]
