@@ -21,6 +21,10 @@ class_name Character
 @export var push_strength : float = 1000
 ## Layer(s) the character can interact with
 @export var interaction_layer : int = 16
+## Speed at which the player get knocked back when hurt, proportional to his previous speed
+@export var knockback : float = 1.5
+## Time during which the player has less mobility after being knocked back, in seconds
+@export var rehab_time : float = 0.2
 
 @export_group("Controls")
 @export var jump_key: StringName = "ui_accept"

@@ -1,0 +1,6 @@
+[gd_resource type="Resource" load_steps=2 format=3 uid="uid://qjfsd7g8asau"]
+
+[ext_resource type="Script" path="res://ressources/states/dying.gd" id="1_vq2f1"]
+
+[resource]
+script = ExtResource("1_vq2f1")

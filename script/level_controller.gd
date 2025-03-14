@@ -62,7 +62,7 @@ func start_level(level: PackedScene, player1: Character, player2: Character, hs:
 	var rc = RemoteTransform2D.new()
 	rc.remote_path = %Viewport1/Camera1.get_path()
 	p1.add_child(rc)
-	ui1._restart = p1.init.bind(world.player1_position.position, world.starting_terrain)
+	ui1._restart = p1.die
 	
 	# Player 2 creation
 	var p2: CharacterController = CHARACTER.instantiate()
@@ -73,4 +73,4 @@ func start_level(level: PackedScene, player1: Character, player2: Character, hs:
 	var _rc = RemoteTransform2D.new()
 	_rc.remote_path = %Viewport2/Camera2.get_path()
 	p2.add_child(_rc)
-	ui2._restart = p2.init.bind(world.player2_position.position, world.starting_terrain)
+	ui2._restart = p2.die

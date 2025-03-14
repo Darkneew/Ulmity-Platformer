@@ -64,7 +64,7 @@ position = Vector2(384, 24)
 scale = Vector2(2.23696, 1)
 
 [node name="spike" parent="Map" instance=ExtResource("9_u3y5p")]
-position = Vector2(2936, -656)
+position = Vector2(3896, -640)
 
 [node name="Markers" type="Node2D" parent="."]
 
