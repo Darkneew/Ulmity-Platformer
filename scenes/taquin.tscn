@@ -11,7 +11,7 @@
 [ext_resource type="Texture2D" uid="uid://dxcftxas2ed35" path="res://UI/taquin_images/im6.png" id="9_xxlea"]
 [ext_resource type="Texture2D" uid="uid://cx5por4cg8eog" path="res://UI/taquin_images/im7.png" id="10_1qd8f"]
 [ext_resource type="Texture2D" uid="uid://dl762xuk07hjg" path="res://UI/taquin_images/im8.png" id="11_l660n"]
-[ext_resource type="Theme" uid="uid://uhecttg57lt7" path="res://UI/main_theme.tres" id="12_xnhfd"]
+[ext_resource type="Theme" uid="uid://doo3l0khfcaiw" path="res://UI/option.tres" id="12_frk5m"]
 
 [node name="Taquin" type="Control"]
 layout_mode = 3
@@ -201,12 +201,29 @@ theme = ExtResource("2_dfrap")
 wait_time = 0.5
 one_shot = true
 
-[node name="Home" type="Button" parent="."]
+[node name="ColorRect" type="ColorRect" parent="."]
+layout_mode = 0
+offset_left = 32.0
+offset_top = 24.0
+offset_right = 232.0
+offset_bottom = 124.0
+color = Color(1, 1, 1, 0.298039)
+
+[node name="Home" type="Button" parent="ColorRect"]
 layout_mode = 1
-offset_right = 176.0
-offset_bottom = 96.0
-theme = ExtResource("12_xnhfd")
-theme_override_font_sizes/font_size = 50
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -95.0
+offset_top = -36.0
+offset_right = 95.0
+offset_bottom = 36.0
+grow_horizontal = 2
+grow_vertical = 2
+theme = ExtResource("12_frk5m")
+theme_override_font_sizes/font_size = 70
 text = "Back"
 
 [connection signal="pressed" from="Board/Rect1/Button" to="." method="move" binds= [0]]
@@ -218,4 +235,4 @@ text = "Back"
 [connection signal="pressed" from="Board/Rect7/Button" to="." method="move" binds= [6]]
 [connection signal="pressed" from="Board/Rect8/Button" to="." method="move" binds= [7]]
 [connection signal="timeout" from="SlidingTimer" to="." method="_on_sliding_timer_timeout"]
-[connection signal="pressed" from="Home" to="." method="_on_home_pressed"]
+[connection signal="pressed" from="ColorRect/Home" to="." method="_on_home_pressed"]

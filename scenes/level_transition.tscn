@@ -1,0 +1,103 @@
+[gd_scene load_steps=5 format=3 uid="uid://2drx7iblxahk"]
+
+[ext_resource type="Script" path="res://script/level_transition.gd" id="1_fonbf"]
+[ext_resource type="Texture2D" uid="uid://rw7jo8lwoeot" path="res://terrain/background.png" id="2_unbjg"]
+[ext_resource type="Theme" uid="uid://uhecttg57lt7" path="res://UI/main_theme.tres" id="3_obf5t"]
+[ext_resource type="Theme" uid="uid://doo3l0khfcaiw" path="res://UI/option.tres" id="4_j76gh"]
+
+[node name="Transition" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_fonbf")
+
+[node name="Background" type="TextureRect" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("2_unbjg")
+expand_mode = 3
+stretch_mode = 5
+
+[node name="Subtext" type="RichTextLabel" parent="."]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -468.0
+offset_top = -36.0
+offset_right = 468.0
+offset_bottom = 68.0
+grow_horizontal = 2
+grow_vertical = 2
+theme = ExtResource("3_obf5t")
+theme_override_font_sizes/normal_font_size = 50
+fit_content = true
+scroll_active = false
+
+[node name="Text" type="RichTextLabel" parent="."]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -468.0
+offset_top = -212.0
+offset_right = 468.0
+offset_bottom = -118.0
+grow_horizontal = 2
+grow_vertical = 2
+theme = ExtResource("3_obf5t")
+theme_override_font_sizes/normal_font_size = 150
+fit_content = true
+scroll_active = false
+
+[node name="Next" type="Button" parent="."]
+layout_mode = 1
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = 256.0
+offset_top = -145.0
+offset_right = 440.0
+offset_bottom = -73.0
+grow_horizontal = 2
+grow_vertical = 0
+theme = ExtResource("4_j76gh")
+theme_override_font_sizes/font_size = 70
+text = "Next"
+
+[node name="Home" type="Button" parent="."]
+layout_mode = 0
+offset_left = 152.0
+offset_top = 563.0
+offset_right = 370.0
+offset_bottom = 635.0
+theme = ExtResource("4_j76gh")
+theme_override_font_sizes/font_size = 70
+text = "Home"
+
+[node name="Restart" type="Button" parent="."]
+layout_mode = 0
+offset_left = 408.0
+offset_top = 475.0
+offset_right = 761.0
+offset_bottom = 547.0
+theme = ExtResource("4_j76gh")
+theme_override_font_sizes/font_size = 70
+text = "Restart"
+
+[connection signal="pressed" from="Next" to="." method="go_to_level" binds= [0]]
+[connection signal="pressed" from="Home" to="." method="go_home"]
+[connection signal="pressed" from="Restart" to="." method="go_to_level" binds= [-1]]

@@ -1,0 +1,134 @@
+[gd_scene load_steps=5 format=3 uid="uid://bqqcxe43y0j8n"]
+
+[ext_resource type="Texture2D" uid="uid://rw7jo8lwoeot" path="res://terrain/background.png" id="1_0xkxt"]
+[ext_resource type="Script" path="res://script/levels.gd" id="1_oev65"]
+[ext_resource type="Theme" uid="uid://doo3l0khfcaiw" path="res://UI/option.tres" id="2_dau74"]
+[ext_resource type="Theme" uid="uid://uhecttg57lt7" path="res://UI/main_theme.tres" id="3_fm5xb"]
+
+[node name="Levels" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_oev65")
+
+[node name="Background" type="TextureRect" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("1_0xkxt")
+expand_mode = 3
+stretch_mode = 5
+
+[node name="CenterContainer" type="Control" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_top = 288.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="L7" type="Button" parent="CenterContainer"]
+offset_left = 1024.0
+offset_top = 48.0
+offset_right = 1113.0
+offset_bottom = 176.0
+theme = ExtResource("2_dau74")
+text = "7
+"
+
+[node name="L6" type="Button" parent="CenterContainer"]
+offset_left = 848.0
+offset_top = 184.0
+offset_right = 938.0
+offset_bottom = 312.0
+theme = ExtResource("2_dau74")
+text = "6
+"
+
+[node name="L5" type="Button" parent="CenterContainer"]
+offset_left = 672.0
+offset_top = 40.0
+offset_right = 749.0
+offset_bottom = 168.0
+theme = ExtResource("2_dau74")
+text = "5"
+
+[node name="L4" type="Button" parent="CenterContainer"]
+offset_left = 576.0
+offset_top = 192.0
+offset_right = 662.0
+offset_bottom = 320.0
+theme = ExtResource("2_dau74")
+text = "4
+"
+
+[node name="L3" type="Button" parent="CenterContainer"]
+offset_left = 392.0
+offset_top = 72.0
+offset_right = 470.0
+offset_bottom = 200.0
+theme = ExtResource("2_dau74")
+text = "3"
+
+[node name="L2" type="Button" parent="CenterContainer"]
+offset_left = 248.0
+offset_top = 200.0
+offset_right = 317.0
+offset_bottom = 328.0
+theme = ExtResource("2_dau74")
+text = "2
+"
+
+[node name="L1" type="Button" parent="CenterContainer"]
+layout_mode = 2
+offset_left = 80.0
+offset_top = 80.0
+offset_right = 149.0
+offset_bottom = 208.0
+grow_vertical = 0
+theme = ExtResource("2_dau74")
+text = "1
+"
+
+[node name="Name" type="RichTextLabel" parent="."]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -480.0
+offset_top = -188.0
+offset_right = 496.0
+offset_bottom = -60.0
+grow_horizontal = 2
+grow_vertical = 2
+theme = ExtResource("3_fm5xb")
+theme_override_font_sizes/normal_font_size = 100
+text = "Level selection"
+
+[node name="Home" type="Button" parent="."]
+offset_left = 24.0
+offset_top = 16.0
+offset_right = 212.0
+offset_bottom = 88.0
+theme = ExtResource("2_dau74")
+theme_override_font_sizes/font_size = 60
+text = "Back
+"
+
+[connection signal="pressed" from="CenterContainer/L7" to="." method="_on_button_load_level" binds= [6]]
+[connection signal="pressed" from="CenterContainer/L6" to="." method="_on_button_load_level" binds= [5]]
+[connection signal="pressed" from="CenterContainer/L5" to="." method="_on_button_load_level" binds= [4]]
+[connection signal="pressed" from="CenterContainer/L4" to="." method="_on_button_load_level" binds= [3]]
+[connection signal="pressed" from="CenterContainer/L3" to="." method="_on_button_load_level" binds= [2]]
+[connection signal="pressed" from="CenterContainer/L2" to="." method="_on_button_load_level" binds= [1]]
+[connection signal="pressed" from="CenterContainer/L1" to="." method="_on_button_load_level" binds= [0]]
+[connection signal="pressed" from="Home" to="." method="_on_button_home"]

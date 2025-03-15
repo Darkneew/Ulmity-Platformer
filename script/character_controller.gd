@@ -72,7 +72,7 @@ func update_terrain(_terrain: Terrain):
 		update_state(states.floating_state)
 		target_rotation = _terrain.gravity_direction.angle() - PI/2
 	terrain = _terrain
-	
+
 func die():
 	update_state(states.dying_state)
 

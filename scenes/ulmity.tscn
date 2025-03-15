@@ -8,6 +8,7 @@
 script = ExtResource("1_6bx3i")
 
 [node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
+process_mode = 3
 stream = ExtResource("3_f15aa")
 volume_db = -10.0
 autoplay = true
@@ -15,4 +16,6 @@ autoplay = true
 [node name="Menu" parent="." instance=ExtResource("1_r0opd")]
 
 [connection signal="finished" from="AudioStreamPlayer" to="." method="change_music"]
+[connection signal="char_select" from="Menu" to="." method="load_char_select"]
+[connection signal="levels" from="Menu" to="." method="load_level_select"]
 [connection signal="start" from="Menu" to="." method="load_level" binds= [0]]

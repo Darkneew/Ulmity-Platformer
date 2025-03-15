@@ -2,8 +2,10 @@ extends Node
 
 var rng = RandomNumberGenerator.new()
 const MENU = preload("res://scenes/menu.tscn")
+const LEVEL_SELECT = preload("res://scenes/levels.tscn")
 const LEVEL = preload("res://scenes/level.tscn")
 const TRANSITION = preload("res://scenes/transition.tscn")
+const TRANSITION_LEVEL = preload("res://scenes/level_transition.tscn")
 const TAQUIN = preload("res://scenes/taquin.tscn")
 
 const levels = [
@@ -30,6 +32,8 @@ func load_menu():
 	var my_menu = MENU.instantiate()
 	add_child(my_menu)
 	my_menu.start.connect(load_level.bind(0))
+	my_menu.levels.connect(load_level_select)
+	my_menu.char_select.connect(load_char_select)
 
 func transition(text, callback, sub="", time = 5):
 	get_tree().paused = false
@@ -59,6 +63,17 @@ func play_taquin(callback):
 	var my_taq = TAQUIN.instantiate()
 	add_child(my_taq)
 	my_taq.win.connect(end_taquin.bind(scene, callback))
+
+func load_level_select():
+	get_tree().paused = false
+	remove_child.call_deferred(get_child(1))
+	var level_select = LEVEL_SELECT.instantiate()
+	add_child(level_select)
+	level_select.load_level.connect(load_level)
+	level_select.home.connect(load_menu)
+	
+func load_char_select():
+	pass
 
 func read_high_score(level):
 	var json = JSON.new()
@@ -120,18 +135,22 @@ func write_high_score(score, level):
 		file.close()
 		return write_high_score(score, level)
 
-func next_level(phs, s, i):
-	var time = 5
+func level_transition(phs, s, i):
+	get_tree().paused = false
 	var text = ""
 	var sub = ""
 	if s < phs:
-		time = 10
 		text += "Amazing!"
 		sub += "Previous high score:  " + str(floorf(phs*100)/100) + "s\nNew high score:  " + str(floorf(s*100)/100) + "s"
 	else:
 		text += "Nice try!"
 		sub += "High score:  " + str(floorf(phs*100)/100) + "s\nYour score:  " + str(floorf(s*100)/100) + "s"
-	transition(text, load_level.bind(i), sub, time)
+	remove_child.call_deferred(get_child(1))
+	var my_scene = TRANSITION_LEVEL.instantiate()
+	my_scene.init(text, sub, i, i == levels.size()) 
+	add_child(my_scene)
+	my_scene.home.connect(load_menu)
+	my_scene.load_level.connect(load_level)
 
 func load_level(i: int):
 	get_tree().paused = false
@@ -143,7 +162,7 @@ func load_level(i: int):
 		add_child(our_level)
 		var hs = read_high_score(i)
 		our_level.start_level(levels[i], preload("res://ressources/characters/char1.tres"), preload("res://ressources/characters/default.tres"), hs)
-		our_level.next_level.connect(next_level.bind(i+1))
+		our_level.next_level.connect(level_transition.bind(i+1))
 		our_level.change_high_score.connect(write_high_score.bind(i))
 		our_level.home.connect(load_menu)
 		our_level.taquin.connect(play_taquin)
