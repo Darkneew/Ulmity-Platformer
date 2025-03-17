@@ -1,0 +1,23 @@
+[gd_resource type="Resource" script_class="Character" load_steps=2 format=3 uid="uid://ctbq83ustx5xv"]
+
+[ext_resource type="Script" path="res://ressources/characters/character.gd" id="1_7f5bu"]
+
+[resource]
+script = ExtResource("1_7f5bu")
+lives = 2
+ability = 4
+speed = 1100.0
+min_jump_velocity = 500.0
+max_jump_velocity = 1300.0
+allowed_jumping_time = 200.0
+midair_clumsiness = 200.0
+push_strength = 800.0
+interaction_layer = 16
+knockback = 1.2
+rehab_time = 0.2
+width = 1.1
+height = 0.9
+color = Color(0.145155, 0.878071, 0.099693, 1)
+description = "Just an alien"
+name = "Berna"
+ability_name = "Flying"

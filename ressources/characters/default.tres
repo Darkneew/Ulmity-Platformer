@@ -4,7 +4,8 @@
 
 [resource]
 script = ExtResource("1_g85q4")
-lives = 3
+lives = 2
+ability = 3
 speed = 1300.0
 min_jump_velocity = 500.0
 max_jump_velocity = 1800.0
@@ -14,8 +15,9 @@ push_strength = 1000.0
 interaction_layer = 16
 knockback = 1.5
 rehab_time = 0.2
-jump_key = &"ui_accept"
-left_key = &"ui_left"
-right_key = &"ui_right"
-pause_key = &"p1-pause"
-restart_key = &"p1-restart"
+width = 1.0
+height = 1.0
+color = Color(1, 1, 1, 1)
+description = "Just a lambda person"
+name = "Bob"
+ability_name = "Hovering"

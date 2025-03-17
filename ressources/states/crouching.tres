@@ -1,0 +1,6 @@
+[gd_resource type="Resource" load_steps=2 format=3 uid="uid://dm6rxp3csqv0i"]
+
+[ext_resource type="Script" path="res://ressources/states/crouching.gd" id="1_us3a1"]
+
+[resource]
+script = ExtResource("1_us3a1")

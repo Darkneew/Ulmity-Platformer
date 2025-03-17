@@ -1,0 +1,23 @@
+[gd_resource type="Resource" script_class="Character" load_steps=2 format=3 uid="uid://dn1s12i3jwef3"]
+
+[ext_resource type="Script" path="res://ressources/characters/character.gd" id="1_dl3tw"]
+
+[resource]
+script = ExtResource("1_dl3tw")
+lives = 2
+ability = 2
+speed = 900.0
+min_jump_velocity = 500.0
+max_jump_velocity = 1800.0
+allowed_jumping_time = 200.0
+midair_clumsiness = 700.0
+push_strength = 3000.0
+interaction_layer = 16
+knockback = 1.0
+rehab_time = 0.3
+width = 1.2
+height = 0.8
+color = Color(1, 0.45098, 0.388235, 1)
+description = "Slow, but strong"
+name = "Benoit"
+ability_name = "Short Dash"

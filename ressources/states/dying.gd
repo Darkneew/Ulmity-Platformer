@@ -6,7 +6,7 @@ func init_state(player : CharacterController, _terrain : Terrain, _stats : Chara
 	player.get_tree().create_timer(player.animation_player.current_animation_length).timeout.connect(restart.bind(player))
 	
 
-func process(_delta, _player : CharacterController, _terrain : Terrain, _stats : Character):
+func process(_delta, _player : CharacterController, _terrain : Terrain, _stats : Character, _keys : Keyset):
 	pass 
 
 func restart(player):

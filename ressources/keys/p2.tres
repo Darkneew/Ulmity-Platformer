@@ -1,0 +1,12 @@
+[gd_resource type="Resource" script_class="Keyset" load_steps=2 format=3 uid="uid://b015mewbt3bww"]
+
+[ext_resource type="Script" path="res://ressources/keys/key.gd" id="1_bmwnx"]
+
+[resource]
+script = ExtResource("1_bmwnx")
+jump_key = &"p2-up"
+left_key = &"p2-left"
+right_key = &"p2-right"
+pause_key = &"p2-pause"
+restart_key = &"p2-restart"
+ability_key = &"p2-action"

@@ -1,0 +1,464 @@
+[gd_scene load_steps=18 format=3 uid="uid://bywlv2ooryagm"]
+
+[ext_resource type="Script" path="res://script/char_select.gd" id="1_w1vs1"]
+[ext_resource type="Texture2D" uid="uid://rw7jo8lwoeot" path="res://terrain/background.png" id="2_5va82"]
+[ext_resource type="Theme" uid="uid://doo3l0khfcaiw" path="res://UI/option.tres" id="3_jtkir"]
+[ext_resource type="Theme" uid="uid://uhecttg57lt7" path="res://UI/main_theme.tres" id="4_omb3e"]
+[ext_resource type="Texture2D" uid="uid://cxuxcl2ruqmpi" path="res://spritesheet/Idle.png" id="5_7uqva"]
+[ext_resource type="Theme" uid="uid://ct4kxfgisomwe" path="res://UI/dialogue button.tres" id="6_p20ou"]
+[ext_resource type="Texture2D" uid="uid://bu050n0xopahf" path="res://UI/arrow.png" id="7_5x7qa"]
+[ext_resource type="Texture2D" uid="uid://bx8nw2j8mpxs" path="res://UI/arrow3.png" id="8_iwj1c"]
+[ext_resource type="Texture2D" uid="uid://c7m3stgsr1ld7" path="res://UI/arrow2.png" id="9_1doca"]
+
+[sub_resource type="Animation" id="Animation_46lnr"]
+resource_name = "RESET"
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Image/TextureRect:scale")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(10, 10)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Image/TextureRect:rotation")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [0.0]
+}
+
+[sub_resource type="Animation" id="Animation_3whkv"]
+resource_name = "p2-in"
+length = 0.5
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Image/TextureRect:rotation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.3, 0.5),
+"transitions": PackedFloat32Array(1.56917, 0.707107, 1),
+"update": 0,
+"values": [0.0, -0.174533, 0.0]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Image/TextureRect:scale")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.3, 0.5),
+"transitions": PackedFloat32Array(1.41421, 0.535887, 1),
+"update": 0,
+"values": [Vector2(9.53674e-06, 9.53674e-06), Vector2(13, 13), Vector2(10, 10)]
+}
+
+[sub_resource type="Animation" id="Animation_bx211"]
+resource_name = "p1-out"
+length = 0.5
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Image/TextureRect:scale")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.2, 0.4, 0.5),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 0,
+"values": [Vector2(10, 10), Vector2(7, 7), Vector2(2, 2), Vector2(1e-05, 1e-05)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Image/TextureRect:rotation")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.2, 0.4, 0.5),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 0,
+"values": [0.0, 1.5708, 6.28319, 13.9626]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_bkcfi"]
+_data = {
+"RESET": SubResource("Animation_46lnr"),
+"p2-in": SubResource("Animation_3whkv"),
+"p2-out": SubResource("Animation_bx211")
+}
+
+[sub_resource type="Animation" id="Animation_mxt7s"]
+resource_name = "RESET"
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("P1/Image/TextureRect:scale")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(10, 10)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("P1/Image/TextureRect:rotation")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [0.0]
+}
+
+[sub_resource type="Animation" id="Animation_ad0jv"]
+resource_name = "p1-in"
+length = 0.5
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("P1/Image/TextureRect:rotation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.3, 0.5),
+"transitions": PackedFloat32Array(1.56917, 0.707107, 1),
+"update": 0,
+"values": [0.0, -0.174533, 0.0]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("P1/Image/TextureRect:scale")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.3, 0.5),
+"transitions": PackedFloat32Array(1.41421, 0.535887, 1),
+"update": 0,
+"values": [Vector2(9.53674e-06, 9.53674e-06), Vector2(13, 13), Vector2(10, 10)]
+}
+
+[sub_resource type="Animation" id="Animation_k1lnr"]
+resource_name = "p1-out"
+length = 0.5
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("P1/Image/TextureRect:scale")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.2, 0.4, 0.5),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 0,
+"values": [Vector2(10, 10), Vector2(7, 7), Vector2(2, 2), Vector2(1e-05, 1e-05)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("P1/Image/TextureRect:rotation")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.2, 0.4, 0.5),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 0,
+"values": [0.0, 1.5708, 6.28319, 13.9626]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_wapt3"]
+_data = {
+"RESET": SubResource("Animation_mxt7s"),
+"p1-in": SubResource("Animation_ad0jv"),
+"p1-out": SubResource("Animation_k1lnr")
+}
+
+[node name="CharSelect" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_w1vs1")
+
+[node name="Background" type="TextureRect" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("2_5va82")
+expand_mode = 3
+stretch_mode = 5
+
+[node name="Name" type="RichTextLabel" parent="."]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -448.0
+offset_top = -284.0
+offset_right = 448.0
+offset_bottom = -82.0
+grow_horizontal = 2
+grow_vertical = 2
+theme = ExtResource("4_omb3e")
+theme_override_font_sizes/normal_font_size = 70
+text = "
+ Character selection"
+fit_content = true
+
+[node name="Home" type="Button" parent="."]
+layout_mode = 0
+offset_left = 24.0
+offset_top = 24.0
+offset_right = 144.0
+offset_bottom = 80.0
+theme = ExtResource("3_jtkir")
+theme_override_font_sizes/font_size = 40
+text = "Back
+"
+
+[node name="P2" type="Control" parent="."]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = 168.0
+offset_top = 20.0
+offset_right = 208.0
+offset_bottom = 60.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Image" type="Control" parent="P2"]
+anchors_preset = 0
+offset_left = 56.0
+offset_top = 16.0
+offset_right = 96.0
+offset_bottom = 56.0
+
+[node name="TextureRect" type="TextureRect" parent="P2/Image"]
+texture_filter = 1
+layout_mode = 0
+offset_right = 16.0
+offset_bottom = 16.0
+scale = Vector2(10, 10)
+pivot_offset = Vector2(8, 8)
+texture = ExtResource("5_7uqva")
+expand_mode = 4
+stretch_mode = 1
+
+[node name="RichTextLabel" type="RichTextLabel" parent="P2"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -188.0
+offset_top = 116.0
+offset_right = 268.0
+offset_bottom = 272.0
+grow_horizontal = 2
+grow_vertical = 2
+theme = ExtResource("6_p20ou")
+theme_override_colors/default_color = Color(1, 1, 1, 1)
+theme_override_font_sizes/normal_font_size = 30
+bbcode_enabled = true
+text = "[center] Bob 
+small but fast
+ability: dash
+test
+[/center]"
+fit_content = true
+
+[node name="Left" type="TextureButton" parent="P2"]
+layout_mode = 0
+offset_left = -120.0
+offset_top = -24.0
+offset_right = -48.0
+offset_bottom = 79.0
+texture_normal = ExtResource("7_5x7qa")
+texture_pressed = ExtResource("8_iwj1c")
+texture_hover = ExtResource("9_1doca")
+ignore_texture_size = true
+stretch_mode = 0
+flip_h = true
+flip_v = true
+
+[node name="Right" type="TextureButton" parent="P2"]
+layout_mode = 0
+offset_left = 168.0
+offset_top = -24.0
+offset_right = 240.0
+offset_bottom = 79.0
+texture_normal = ExtResource("7_5x7qa")
+texture_pressed = ExtResource("8_iwj1c")
+texture_hover = ExtResource("9_1doca")
+ignore_texture_size = true
+stretch_mode = 0
+
+[node name="Name" type="RichTextLabel" parent="P2"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -44.0
+offset_top = -164.0
+offset_right = 156.0
+offset_bottom = -76.0
+grow_horizontal = 2
+grow_vertical = 2
+theme = ExtResource("4_omb3e")
+theme_override_font_sizes/normal_font_size = 30
+text = "
+Player  2"
+fit_content = true
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="P2"]
+libraries = {
+"": SubResource("AnimationLibrary_bkcfi")
+}
+
+[node name="P1" type="Control" parent="."]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -320.0
+offset_top = 20.0
+offset_right = -280.0
+offset_bottom = 60.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="P1"]
+root_node = NodePath("../..")
+libraries = {
+"": SubResource("AnimationLibrary_wapt3")
+}
+
+[node name="Image" type="Control" parent="P1"]
+anchors_preset = 0
+offset_left = 56.0
+offset_top = 16.0
+offset_right = 96.0
+offset_bottom = 56.0
+
+[node name="TextureRect" type="TextureRect" parent="P1/Image"]
+texture_filter = 1
+layout_mode = 0
+offset_right = 16.0
+offset_bottom = 16.0
+scale = Vector2(10, 10)
+pivot_offset = Vector2(8, 8)
+texture = ExtResource("5_7uqva")
+expand_mode = 4
+stretch_mode = 1
+
+[node name="RichTextLabel" type="RichTextLabel" parent="P1"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -172.0
+offset_top = 116.0
+offset_right = 252.0
+offset_bottom = 272.0
+grow_horizontal = 2
+grow_vertical = 2
+theme = ExtResource("6_p20ou")
+theme_override_colors/default_color = Color(1, 1, 1, 1)
+theme_override_font_sizes/normal_font_size = 30
+bbcode_enabled = true
+text = "[center] Bob 
+small but fast
+ability: dash
+test
+[/center]"
+fit_content = true
+
+[node name="Left" type="TextureButton" parent="P1"]
+layout_mode = 0
+offset_left = -120.0
+offset_top = -24.0
+offset_right = -48.0
+offset_bottom = 79.0
+texture_normal = ExtResource("7_5x7qa")
+texture_pressed = ExtResource("8_iwj1c")
+texture_hover = ExtResource("9_1doca")
+ignore_texture_size = true
+stretch_mode = 0
+flip_h = true
+flip_v = true
+
+[node name="Right" type="TextureButton" parent="P1"]
+layout_mode = 0
+offset_left = 168.0
+offset_top = -24.0
+offset_right = 240.0
+offset_bottom = 79.0
+texture_normal = ExtResource("7_5x7qa")
+texture_pressed = ExtResource("8_iwj1c")
+texture_hover = ExtResource("9_1doca")
+ignore_texture_size = true
+stretch_mode = 0
+
+[node name="Name" type="RichTextLabel" parent="P1"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -44.0
+offset_top = -164.0
+offset_right = 156.0
+offset_bottom = -76.0
+grow_horizontal = 2
+grow_vertical = 2
+theme = ExtResource("4_omb3e")
+theme_override_font_sizes/normal_font_size = 30
+text = "
+Player  1"
+fit_content = true
+
+[connection signal="pressed" from="Home" to="." method="_on_button_home"]
+[connection signal="pressed" from="P2/Left" to="." method="change_p2_left"]
+[connection signal="pressed" from="P2/Right" to="." method="change_p2_right"]
+[connection signal="animation_finished" from="P2/AnimationPlayer" to="." method="on_end_animation_p2"]
+[connection signal="animation_finished" from="P1/AnimationPlayer" to="." method="on_end_animation_p1"]
+[connection signal="pressed" from="P1/Left" to="." method="change_p1_left"]
+[connection signal="pressed" from="P1/Right" to="." method="change_p1_right"]

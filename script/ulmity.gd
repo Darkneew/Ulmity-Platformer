@@ -3,6 +3,7 @@ extends Node
 var rng = RandomNumberGenerator.new()
 const MENU = preload("res://scenes/menu.tscn")
 const LEVEL_SELECT = preload("res://scenes/levels.tscn")
+const CHAR_SELECT = preload("res://scenes/char_select.tscn")
 const LEVEL = preload("res://scenes/level.tscn")
 const TRANSITION = preload("res://scenes/transition.tscn")
 const TRANSITION_LEVEL = preload("res://scenes/level_transition.tscn")
@@ -20,6 +21,15 @@ const musics = [
 	preload("res://sound/music_3.mp3"),	
 	preload("res://sound/music_4.mp3"),
 ]
+
+var char1: Character = preload("res://ressources/characters/default.tres")
+var char2: Character = preload("res://ressources/characters/default.tres")
+
+func set_char1(c: Character):
+	char1 = c
+
+func set_char2(c: Character):
+	char2 = c
 
 func change_music():
 	await get_tree().create_timer(rng.randf_range(3, 10)).timeout
@@ -73,7 +83,14 @@ func load_level_select():
 	level_select.home.connect(load_menu)
 	
 func load_char_select():
-	pass
+	get_tree().paused = false
+	remove_child.call_deferred(get_child(1))
+	var char_select = CHAR_SELECT.instantiate()
+	char_select.init(char1, char2)
+	add_child(char_select)
+	char_select.home.connect(load_menu)
+	char_select.change_char1.connect(set_char1)
+	char_select.change_char2.connect(set_char2)
 
 func read_high_score(level):
 	var json = JSON.new()
@@ -161,7 +178,7 @@ func load_level(i: int):
 		var our_level = LEVEL.instantiate()
 		add_child(our_level)
 		var hs = read_high_score(i)
-		our_level.start_level(levels[i], preload("res://ressources/characters/char1.tres"), preload("res://ressources/characters/default.tres"), hs)
+		our_level.start_level(levels[i], char1, char2, preload("res://ressources/keys/p1.tres"), preload("res://ressources/keys/p2.tres"), hs)
 		our_level.next_level.connect(level_transition.bind(i+1))
 		our_level.change_high_score.connect(write_high_score.bind(i))
 		our_level.home.connect(load_menu)

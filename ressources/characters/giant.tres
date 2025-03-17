@@ -1,0 +1,23 @@
+[gd_resource type="Resource" script_class="Character" load_steps=2 format=3 uid="uid://cs67r5wshkev1"]
+
+[ext_resource type="Script" path="res://ressources/characters/character.gd" id="1_umi0n"]
+
+[resource]
+script = ExtResource("1_umi0n")
+lives = 3
+ability = 0
+speed = 1200.0
+min_jump_velocity = 500.0
+max_jump_velocity = 2100.0
+allowed_jumping_time = 200.0
+midair_clumsiness = 1500.0
+push_strength = 1500.0
+interaction_layer = 16
+knockback = 0.3
+rehab_time = 0.5
+width = 1.4
+height = 1.4
+color = Color(0.466667, 1, 1, 1)
+description = "A giant. Really"
+name = "Brooklyn"
+ability_name = "Double Jump"

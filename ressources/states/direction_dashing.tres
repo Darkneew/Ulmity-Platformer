@@ -1,0 +1,6 @@
+[gd_resource type="Resource" load_steps=2 format=3 uid="uid://c8ajjaow3rsnq"]
+
+[ext_resource type="Script" path="res://ressources/states/direction_dashing.gd" id="1_g3yeq"]
+
+[resource]
+script = ExtResource("1_g3yeq")

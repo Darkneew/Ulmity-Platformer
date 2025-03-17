@@ -4,6 +4,7 @@ class_name CharacterController
 @export_group("Default")
 @export var terrain : Terrain
 @export var stats : Character
+@export var keys : Keyset
 @export var state : State
 
 @export_group("Display")
@@ -15,7 +16,12 @@ var states = {
 	"falling_state": load("res://ressources/states/falling.tres"),
 	"jumping_state": load("res://ressources/states/jumping.tres"),
 	"walking_state": load("res://ressources/states/walking.tres"),
-	"dying_state": load("res://ressources/states/dying.tres")
+	"dying_state": load("res://ressources/states/dying.tres"),
+	"slow_falling_state": load("res://ressources/states/slow_falling.tres"),
+	"crouching_state": load("res://ressources/states/crouching.tres"),
+	"direction_dashing_state": load("res://ressources/states/direction_dashing.tres"),
+	"flying_state": load("res://ressources/states/flying.tres"),
+	"long_dashing_state": load("res://ressources/states/long_dashing.tres")
 }
 
 const UI = preload("res://script/ui.gd")
@@ -26,6 +32,7 @@ var target_rotation: float = 0
 var knocked_back := false
 var init_pos: Vector2
 var init_terrain: Terrain
+var can_ability := true
 
 @onready var sprite : AnimatedSprite2D = $sprite
 @onready var animation_player : AnimationPlayer = $AnimationPlayer
@@ -37,11 +44,14 @@ func init(pos: Vector2, _terrain: Terrain, _state: State = states.floating_state
 	if animation_player:
 		animation_player.play("RESET")
 	score = 0
-	heart = 3 
+	heart = stats.lives
+	can_ability = true 
 	if ui:
 		ui.update_hearts(heart)
+	set_appearance()
 	init_pos = pos
 	init_terrain = _terrain
+	last_jump_velocity = stats.max_jump_velocity
 	rotation = target_rotation 
 	update_state.bind(_state).call_deferred()
 	update_terrain(_terrain)
@@ -56,20 +66,27 @@ func x_speed():
 
 func _ready():
 	heart = stats.lives
+	if ui:
+		ui.update_hearts(heart)
 	last_jump_velocity = stats.max_jump_velocity
  
 func update_state(_state: State):
 	state = _state
 	_state.init_state(self, terrain, stats)
 
+func set_appearance():
+	modulate = stats.color
+	scale = Vector2(stats.width, stats.height)
+
 func _process(delta):
-	state.process(delta, self, terrain, stats)
+	state.process(delta, self, terrain, stats, keys)
 	rotation = lerpf(rotation, target_rotation, min(rotation_speed*delta, 1))
 
 func update_terrain(_terrain: Terrain):
 	if _terrain.gravity_direction.dot(terrain.gravity_direction) < 1:
 		up_direction = - _terrain.gravity_direction
 		update_state(states.floating_state)
+		set_appearance()
 		target_rotation = _terrain.gravity_direction.angle() - PI/2
 	terrain = _terrain
 

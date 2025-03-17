@@ -1,0 +1,6 @@
+[gd_resource type="Resource" load_steps=2 format=3 uid="uid://dgyhp5xltfq4x"]
+
+[ext_resource type="Script" path="res://ressources/states/slow_falling.gd" id="1_lpfpm"]
+
+[resource]
+script = ExtResource("1_lpfpm")

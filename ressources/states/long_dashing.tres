@@ -1,0 +1,6 @@
+[gd_resource type="Resource" load_steps=2 format=3 uid="uid://hqralaseet07"]
+
+[ext_resource type="Script" path="res://ressources/states/long_dashing.gd" id="1_ip4c7"]
+
+[resource]
+script = ExtResource("1_ip4c7")

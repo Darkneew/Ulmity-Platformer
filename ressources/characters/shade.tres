@@ -1,0 +1,23 @@
+[gd_resource type="Resource" script_class="Character" load_steps=2 format=3 uid="uid://ctajg02va8e24"]
+
+[ext_resource type="Script" path="res://ressources/characters/character.gd" id="1_tvvnc"]
+
+[resource]
+script = ExtResource("1_tvvnc")
+lives = 1
+ability = 5
+speed = 1600.0
+min_jump_velocity = 500.0
+max_jump_velocity = 1400.0
+allowed_jumping_time = 200.0
+midair_clumsiness = 200.0
+push_strength = 300.0
+interaction_layer = 16
+knockback = 2.0
+rehab_time = 0.1
+width = 0.7
+height = 0.7
+color = Color(0.133196, 0.133196, 0.133196, 1)
+description = "The Shadow itself"
+name = "Bella"
+ability_name = "Being small"

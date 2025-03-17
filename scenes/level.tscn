@@ -27,7 +27,7 @@ render_target_update_mode = 4
 
 [node name="Camera1" type="Camera2D" parent="HBoxContainer/Player1Container/Viewport1"]
 ignore_rotation = false
-zoom = Vector2(0.2, 0.2)
+zoom = Vector2(0.16, 0.16)
 
 [node name="Player2Container" type="SubViewportContainer" parent="HBoxContainer"]
 layout_mode = 2
@@ -42,7 +42,7 @@ render_target_update_mode = 4
 
 [node name="Camera2" type="Camera2D" parent="HBoxContainer/Player2Container/Viewport2"]
 ignore_rotation = false
-zoom = Vector2(0.2, 0.2)
+zoom = Vector2(0.16, 0.16)
 
 [node name="Control" parent="." instance=ExtResource("2_gdxu8")]
 

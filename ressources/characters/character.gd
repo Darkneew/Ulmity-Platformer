@@ -3,6 +3,8 @@ class_name Character
 
 ## Number of lives of the player
 @export var lives : int = 3
+## Ability of the character
+@export var ability : Abilities.abilities = Abilities.abilities.none
 
 @export_group("Movement")
 ## Speed of the player
@@ -26,9 +28,16 @@ class_name Character
 ## Time during which the player has less mobility after being knocked back, in seconds
 @export var rehab_time : float = 0.2
 
-@export_group("Controls")
-@export var jump_key: StringName = "ui_accept"
-@export var left_key: StringName = "ui_left"
-@export var right_key: StringName = "ui_right"
-@export var pause_key: StringName = "p1-pause"
-@export var restart_key: StringName = "p1-restart"
+@export_group("Appearance")
+## Width of the character
+@export_range(0,2) var width : float = 1
+## Height of the character
+@export_range(0,2) var height : float = 1
+## Color of the character 
+@export var color : Color = Color.WHITE
+## Description 
+@export var description : String = "Just a lambda person"
+## Name 
+@export var name : String = "Bob"
+## Ability name 
+@export var ability_name : String = "None"

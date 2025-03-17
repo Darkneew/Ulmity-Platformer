@@ -1,0 +1,23 @@
+[gd_resource type="Resource" script_class="Character" load_steps=2 format=3 uid="uid://cmxfhaf42yuok"]
+
+[ext_resource type="Script" path="res://ressources/characters/character.gd" id="1_svpeu"]
+
+[resource]
+script = ExtResource("1_svpeu")
+lives = 3
+ability = 6
+speed = 1700.0
+min_jump_velocity = 500.0
+max_jump_velocity = 2100.0
+allowed_jumping_time = 200.0
+midair_clumsiness = 100.0
+push_strength = 1500.0
+interaction_layer = 16
+knockback = 1.0
+rehab_time = 0.1
+width = 1.1
+height = 1.1
+color = Color(0.985826, 0.736023, 0.478524, 1)
+description = "It's Superman"
+name = "Blark"
+ability_name = "Super everything"
